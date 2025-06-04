@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Firma de Servicios</title>
+  <style>
+    /* ===== Estilos básicos ===== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+      color: #333;
+    }
+    /* ===== Header ===== */
+    header {
+      background-color: #1a237e;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+    }
+    header nav a {
+      color: #fff;
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    /* ===== Banner ===== */
+    #banner {
+      background-color: #e8eaf6;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    #banner h1 {
+      font-size: 2.5rem;
+      color: #1a237e;
+      margin-bottom: 0.5rem;
+    }
+    #banner p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    #banner .btn {
+      background-color: #1a237e;
+      color: #fff;
+      padding: 0.8rem 1.8rem;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    /* ===== Secciones ===== */
+    .section {
+      padding: 3rem 2rem;
+    }
+    .section h2 {
+      font-size: 2rem;
+      color: #1a237e;
+      margin-bottom: 1rem;
+    }
+    .item {
+      margin-bottom: 2rem;
+    }
+    .item h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+    .item p {
+      margin-left: 1rem;
+      color: #555;
+    }
+    /* ===== Formulario ===== */
+    .form input,
+    .form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .form button {
+      background-color: #1a237e;
+      color: #fff;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .form button:hover {
+      background-color: #3949ab;
+    }
+    /* ===== Footer ===== */
+    footer {
+      background-color: #eeeeee;
+      text-align: center;
+      padding: 1rem 2rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <nav>
+      <a href="#servicios-financieros">Financieros</a>
+      <a href="#servicios-contables">Contables</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- ===== Banner ===== -->
+  <section id="banner">
+    <h1>Soluciones Financieras y Contables</h1>
+    <p>Asesoría integral para optimizar tus recursos y cumplir normativas.</p>
+    <a href="#servicios-financieros" class="btn">Ver servicios financieros</a>
+  </section>
+
+  <!-- ===== Sección Servicios Financieros ===== -->
+  <section id="servicios-financieros" class="section">
+    <h2>Servicios Financieros</h2>
+    <div class="item">
+      <h3>Planeación Financiera Corporativa</h3>
+      <p>
+        • Análisis de estados financieros.<br>
+        • Proyecciones de flujo de caja y presupuesto anual.<br>
+        • Definición de KPIs y metas financieras.
+      </p>
+    </div>
+    <div class="item">
+      <h3>Evaluación de Proyectos de Inversión</h3>
+      <p>
+        • Cálculo de VAN y TIR.<br>
+        • Análisis de payback y escenarios de sensibilidad.<br>
+        • Recomendaciones de viabilidad.
+      </p>
+    </div>
+    <div class="item">
+      <h3>Optimización de Costos y Eficiencia</h3>
+      <p>
+        • Identificación de gastos innecesarios.<br>
+        • Reingeniería de procesos.<br>
+        • Implementación de indicadores de eficiencia.
+      </p>
+    </div>
+    <div class="item">
+      <h3>Asesoría en Fuentes de Financiamiento</h3>
+      <p>
+        • Estructuración de líneas de crédito y leasing.<br>
+        • Emisión de bonos.<br>
+        • Negociación de tasas y plazos.
+      </p>
+    </div>
+    <div class="item">
+      <h3>Análisis de Riesgos y Simulación</h3>
+      <p>
+        • Simulación Monte Carlo.<br>
+        • Identificación de riesgos (tipo de cambio, tasas, contrapartes).<br>
+        • Plan de acción ante desviaciones.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Sección Servicios Contables ===== -->
+  <section id="servicios-contables" class="section">
+    <h2>Servicios Contables y Asesoría</h2>
+    <div class="item">
+      <h3>Contabilidad Financiera Integral</h3>
+      <p>
+        • Registro contable diario y conciliaciones bancarias.<br>
+        • Estados financieros mensuales y anuales.<br>
+        • Reportes de balances y PYG.
+      </p>
+    </div>
+    <div class="item">
+      <h3>Asesoría Tributaria y Fiscal</h3>
+      <p>
+        • Declaraciones de IVA e impuesto de renta.<br>
+        • Planificación tributaria.<br>
+        • Trámites ante la DIAN.
+      </p>
+    </div>
+    <div class="item">
+      <h3>Costos y Presupuestación</h3>
+      <p>
+        • Cálculo de costos por centro de costo.<br>
+        • Análisis de desviaciones presupuestales.<br>
+        • Proyección de presupuestos a mediano y largo plazo.
+      </p>
+    </div>
+    <div class="item">
+      <h3>Normas Internacionales (NIIF)</h3>
+      <p>
+        • Adaptación de políticas contables.<br>
+        • Elaboración de notas a estados financieros.<br>
+        • Capacitación interna.
+      </p>
+    </div>
+    <div class="item">
+      <h3>Outsourcing Contable</h3>
+      <p>
+        • Servicio 100% en línea (Siigo, QuickBooks).<br>
+        • Acceso en la nube.<br>
+        • Reportes automáticos.
+      </p>
+    </div>
+    <div class="item">
+      <h3>Asesoría para Créditos y Capital</h3>
+      <p>
+        • Informes financieros para banca.<br>
+        • Modelos de proyección de flujo de caja.<br>
+        • Negociación de condiciones.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Sección Contacto ===== -->
+  <section id="contacto" class="section">
+    <h2>Contacto</h2>
+    <p><strong>Teléfono:</strong> +57 312 XXX XXXX<br>
+       <strong>Email:</strong> contacto@hazelro.com<br>
+       <strong>Dirección:</strong> Calle 123 # 45-67, Bogotá D.C.</p>
+    <form action="mailto:contacto@hazelro.com" method="post" enctype="text/plain" class="form">
+      <label>Nombre:<br>
+        <input type="text" name="Nombre" required>
+      </label><br><br>
+      <label>Empresa:<br>
+        <input type="text" name="Empresa">
+      </label><br><br>
+      <label>Email:<br>
+        <input type="email" name="Email" required>
+      </label><br><br>
+      <label>Teléfono:<br>
+        <input type="tel" name="Teléfono">
+      </label><br><br>
+      <label>Mensaje:<br>
+        <textarea name="Mensaje" rows="4" required></textarea>
+      </label><br><br>
+      <button type="submit" class="btn">Enviar Mensaje</button>
+    </form>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    © 2025 HazelRo. Todos los derechos reservados.
+  </footer>
+
+</body>
+</html>
+
