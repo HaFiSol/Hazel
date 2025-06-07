@@ -8,14 +8,14 @@
   <style>
     :root{--accent:#FFD700;--bg:#000;--font:#e6e6e6}
     *{box-sizing:border-box;margin:0;padding:0;font-family:"Inter",sans-serif}
-    body{background:var(--bg);color:var(--font);line-height:1.6;padding:1rem 2rem;max-width:1000px;margin:auto}
+    body{background:var(--bg);color:var(--font);line-height:1.6;padding:1rem 2rem;max-width:1100px;margin:auto}
     a{color:var(--accent);text-decoration:none}
     header{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
-    h1{color:var(--accent);font-size:2rem;margin-bottom:1rem}
+    h1{color:var(--accent);font-size:2rem;margin-bottom:.75rem}
     h2{margin:2.5rem 0 1rem;color:var(--accent);font-size:1.3rem}
     footer{margin-top:3rem;font-size:.9rem;color:#888;text-align:center}
-    .flow{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem}
-    .step{flex:1 1 220px;min-width:220px;background:#111;border:2px solid var(--accent);border-radius:.75rem;padding:1.2rem;text-align:center;position:relative}
+    .flow{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem;margin-top:2.5rem}
+    .step{flex:1 1 260px;background:#111;border:2px solid var(--accent);border-radius:.75rem;padding:1.4rem;text-align:left;position:relative}
     .step h3{color:var(--accent);font-size:1.15rem;margin-bottom:.5rem}
     .step p{font-size:.9rem}
     .step:after{content:'';position:absolute;right:-1.5rem;top:50%;width:1.5rem;height:.25rem;background:var(--accent)}
@@ -36,28 +36,40 @@
 
 <div class="flow">
   <div class="step">
-    <h3>Recolección</h3>
-    <p>Datos técnicos, costos de capital y supuestos de mercado.</p>
+    <h3>1&nbsp;• Alcance</h3>
+    <p>Definimos volumen, precios y cronograma; recopilamos datos técnicos
+       y costos de capital.</p>
   </div>
+
   <div class="step">
-    <h3>Modelado</h3>
-    <p>Flujo de caja descontado (VAN, TIR) con sensibilidades clave.</p>
+    <h3>2&nbsp;• Flujos de Caja</h3>
+    <p>Proyectamos ingresos, OPEX, CapEx y capital de trabajo para obtener
+       el flujo libre incremental.</p>
   </div>
+
   <div class="step">
-    <h3>Riesgos</h3>
-    <p>Simulación Monte-Carlo y matriz de riesgos cualitativos.</p>
+    <h3>3&nbsp;• Valoración</h3>
+    <p>Calculamos VAN, TIR y Payback usando WACC ajustado al riesgo.</p>
   </div>
+
   <div class="step">
-    <h3>Decisión</h3>
-    <p>Recomendación invertir / posponer / descartar y plan de acción.</p>
+    <h3>4&nbsp;• Sensibilidades</h3>
+    <p>Analizamos impacto de precio, inversión y costos; elaboramos
+       escenarios base, upside y downside.</p>
+  </div>
+
+  <div class="step">
+    <h3>5&nbsp;• Decisión</h3>
+    <p>Emitimos recomendación (invertir, posponer o descartar) y
+       definimos plan de seguimiento.</p>
   </div>
 </div>
 
 <h2>Entregables</h2>
 <ul>
   <li>Modelo financiero listo para auditoría.</li>
-  <li>Informe ejecutivo con escenarios.</li>
-  <li>Matriz de riesgos y mitigaciones.</li>
+  <li>Informe ejecutivo y matriz de riesgos.</li>
+  <li>Cronograma de hitos y KPIs.</li>
 </ul>
 
 <footer>© 2025 HazelRo • Bogotá-Colombia</footer>
