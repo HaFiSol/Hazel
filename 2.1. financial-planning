@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Planeación Financiera • HazelRo</title>
+  <link rel="stylesheet" href="/styles.css"><!-- (usa el mismo CSS global) -->
+</head>
+<body>
+<header class="navbar">
+  <a href="/" class="logo">HazelRo</a>
+  <nav><a href="/">Inicio</a> | Planeación | <a href="/project-evaluation.html">Evaluación de Proyectos</a> | <a href="/cost-optimization.html">Optimización de Costos</a></nav>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <h1>Planeación Financiera Estratégica</h1>
+    <p>Más de 20 años liderando procesos de FP&A en Oil & Gas y otros sectores, con enfoque en presupuestos CapEx/OpEx y modelos predictivos de escenarios.:contentReference[oaicite:0]{index=0}</p>
+    <a class="btn" href="mailto:asesor@hazelro.com?subject=Planeación%20Financiera">Solicitar diagnóstico gratuito</a>
+  </section>
+
+  <section>
+    <h2>Qué obtienes</h2>
+    <ul>
+      <li>Presupuesto anual, trimestral y rolling-forecast listo para junta directiva.</li>
+      <li>Modelo de sensibilidad en Python para evaluar variables clave (precio crudo, tipo de cambio, etc.).</li>
+      <li>Tablero de control con KPIs de liquidez y rentabilidad.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Resultados probados</h2>
+    <ul>
+      <li>Reducción del ciclo de cierre IFRS en 15 % mediante automatización de reportes.:contentReference[oaicite:1]{index=1}</li>
+      <li>Framework analítico que mejoró la claridad de decisiones para 7 entidades multinacionales.:contentReference[oaicite:2]{index=2}</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="footer">© 2025 HazelRo • Bogotá-Colombia</footer>
+</body>
+</html>
