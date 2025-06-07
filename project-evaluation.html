@@ -6,21 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    :root{--accent:#FFD700;--bg:#000;--font:#e6e6e6}
-    *{box-sizing:border-box;margin:0;padding:0;font-family:"Inter",sans-serif}
+    :root{--accent:#FFE600;--bg:#000;--font:#E6E6E6}
+    *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
     body{background:var(--bg);color:var(--font);line-height:1.6;padding:1rem 2rem;max-width:1100px;margin:auto}
-    a{color:var(--accent);text-decoration:none}
-    header{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
-    h1{color:var(--accent);font-size:2rem;margin-bottom:.75rem}
-    h2{margin:2.5rem 0 1rem;color:var(--accent);font-size:1.3rem}
-    footer{margin-top:3rem;font-size:.9rem;color:#888;text-align:center}
-    .flow{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem;margin-top:2.5rem}
-    .step{flex:1 1 260px;background:#111;border:2px solid var(--accent);border-radius:.75rem;padding:1.4rem;text-align:left;position:relative}
-    .step h3{color:var(--accent);font-size:1.15rem;margin-bottom:.5rem}
+    a{color:var(--accent)}
+    header{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2.4rem}
+    h1{color:var(--accent);font-size:2rem;margin-bottom:.8rem}
+    h2{color:var(--accent);font-size:1.3rem;margin:2rem 0 1rem}
+    .flow{display:flex;flex-wrap:wrap;gap:1.4rem;margin-top:1.8rem}
+    .step{flex:1 1 240px;background:#111;border:2px solid var(--accent);border-radius:.75rem;padding:1.2rem}
+    .step h3{color:var(--accent);margin-bottom:.5rem;font-size:1.05rem}
     .step p{font-size:.9rem}
-    .step:after{content:'';position:absolute;right:-1.5rem;top:50%;width:1.5rem;height:.25rem;background:var(--accent)}
-    .step:last-child:after{display:none}
-    @media(max-width:640px){.flow{gap:2.5rem}.step:after{display:none}}
+    footer{margin-top:3rem;text-align:center;font-size:.85rem;color:#888}
+    @media(max-width:640px){.step{flex:1 1 100%}}
   </style>
 </head>
 <body>
@@ -28,50 +26,37 @@
 <header>
   <a href="/">Inicio</a> |
   <a href="/financial-planning.html">Planeación</a> |
-  <span>Evaluación de Proyectos</span> |
-  <a href="/cost-optimization.html">Optimización de Costos</a>
+  <span>Evaluación</span> |
+  <a href="/cost-optimization.html">Optimización</a> |
+  <a href="/outsourcing.html">Outsourcing</a> |
+  <a href="/tax-advice.html">Tributaria&nbsp;PN</a>
 </header>
 
 <h1>Evaluación Financiera de Proyectos</h1>
 
+<p>Valoramos iniciativas de inversión con metodologías VAN, TIR, Payback e índices de rentabilidad, incorporando escenarios y sensibilidad.</p>
+
+<h2>Flujo de trabajo</h2>
+
 <div class="flow">
-  <div class="step">
-    <h3>1&nbsp;• Alcance</h3>
-    <p>Definimos volumen, precios y cronograma; recopilamos datos técnicos
-       y costos de capital.</p>
-  </div>
-
-  <div class="step">
-    <h3>2&nbsp;• Flujos de Caja</h3>
-    <p>Proyectamos ingresos, OPEX, CapEx y capital de trabajo para obtener
-       el flujo libre incremental.</p>
-  </div>
-
-  <div class="step">
-    <h3>3&nbsp;• Valoración</h3>
-    <p>Calculamos VAN, TIR y Payback usando WACC ajustado al riesgo.</p>
-  </div>
-
-  <div class="step">
-    <h3>4&nbsp;• Sensibilidades</h3>
-    <p>Analizamos impacto de precio, inversión y costos; elaboramos
-       escenarios base, upside y downside.</p>
-  </div>
-
-  <div class="step">
-    <h3>5&nbsp;• Decisión</h3>
-    <p>Emitimos recomendación (invertir, posponer o descartar) y
-       definimos plan de seguimiento.</p>
-  </div>
+  <div class="step"><h3>1 • Alcance</h3><p>Supuestos técnicos, cronograma y CapEx.</p></div>
+  <div class="step"><h3>2 • Flujos</h3><p>Ingresos, OPEX y capital de trabajo incremental.</p></div>
+  <div class="step"><h3>3 • Valoración</h3><p>VAN y TIR con WACC ajustado al riesgo.</p></div>
+  <div class="step"><h3>4 • Sensibilidades</h3><p>Precio, costos, inversión y tipo de cambio.</p></div>
+  <div class="step"><h3>5 • Decisión</h3><p>Recomendación — invertir, posponer o descartar.</p></div>
 </div>
 
 <h2>Entregables</h2>
 <ul>
-  <li>Modelo financiero listo para auditoría.</li>
+  <li>Modelo financiero audit-ready.</li>
   <li>Informe ejecutivo y matriz de riesgos.</li>
-  <li>Cronograma de hitos y KPIs.</li>
+  <li>KPIs y cronograma de control.</li>
 </ul>
 
-<footer>© 2025 HazelRo • Bogotá-Colombia</footer>
+<footer>
+  Tel: <a href="tel:+573212063866">+57&nbsp;321&nbsp;206&nbsp;3866</a> &nbsp;|&nbsp;
+  Email: <a href="mailto:asesor@hazelro.com">asesor@hazelro.com</a><br>
+  © 2025 HazelRo • Bogotá-Colombia
+</footer>
 </body>
 </html>
