@@ -8,15 +8,22 @@
   <style>
     :root{--accent:#FFD700;--bg:#000;--font:#e6e6e6}
     *{box-sizing:border-box;margin:0;padding:0;font-family:"Inter",sans-serif}
-    body{background:var(--bg);color:var(--font);line-height:1.6;padding:1rem 2rem;max-width:900px;margin:auto}
+    body{background:var(--bg);color:var(--font);line-height:1.6;padding:1rem 2rem;max-width:1000px;margin:auto}
     a{color:var(--accent);text-decoration:none}
-    header{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+    header{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
     header a{font-weight:500}
-    h1{color:var(--accent);margin-bottom:1rem;font-size:2rem}
-    h2{margin:2rem 0 1rem;color:var(--accent);font-size:1.5rem}
-    ul{margin-left:1.25rem}
+    h1{color:var(--accent);font-size:2rem;margin-bottom:1rem}
+    h2{margin:2.5rem 0 1rem;color:var(--accent);font-size:1.3rem}
     footer{margin-top:3rem;font-size:.9rem;color:#888;text-align:center}
-    .btn{display:inline-block;margin-top:1rem;padding:.6rem 1.3rem;background:var(--accent);color:#000;border-radius:.4rem;font-weight:600}
+
+    /* ---- Proceso en línea ---- */
+    .flow{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem}
+    .step{flex:1 1 220px;min-width:220px;background:#111;border:2px solid var(--accent);border-radius:.75rem;padding:1.2rem;text-align:center;position:relative}
+    .step h3{color:var(--accent);font-size:1.15rem;margin-bottom:.5rem}
+    .step p{font-size:.9rem}
+    .step:after{content:'';position:absolute;right:-1.5rem;top:50%;width:1.5rem;height:.25rem;background:var(--accent)}
+    .step:last-child:after{display:none}
+    @media(max-width:640px){.flow{gap:2.5rem}.step:after{display:none}}
   </style>
 </head>
 <body>
@@ -30,21 +37,30 @@
 
 <h1>Planeación Financiera Estratégica</h1>
 
-<p>Más de 20&nbsp;años liderando procesos de FP&amp;A en Oil &amp; Gas y otros sectores, con enfoque en <strong>presupuestos CapEx/OpEx</strong> y modelos predictivos de escenarios.</p>
+<div class="flow">
+  <div class="step">
+    <h3>Diagnóstico</h3>
+    <p>Revisión de proyecciones, supuestos clave y capacidad de generación de caja.</p>
+  </div>
+  <div class="step">
+    <h3>Modelado</h3>
+    <p>Construcción de presupuesto maestro y escenarios “what-if” en horizonte anual y plurianual.</p>
+  </div>
+  <div class="step">
+    <h3>Ejecución</h3>
+    <p>Implementación de controles, dashboards e indicadores de desempeño.</p>
+  </div>
+  <div class="step">
+    <h3>Seguimiento</h3>
+    <p>Reforecast trimestral y recomendaciones tácticas para cumplir metas.</p>
+  </div>
+</div>
 
-<a class="btn" href="mailto:asesor@hazelro.com?subject=Diagnóstico%20Planeación">Solicitar diagnóstico gratuito</a>
-
-<h2>Qué obtienes</h2>
+<h2>Entregables</h2>
 <ul>
-  <li>Presupuesto anual, trimestral y rolling-forecast listo para junta directiva.</li>
-  <li>Modelo de sensibilidad en Python para evaluar variables clave (precio crudo, tipo de cambio, etc.).</li>
-  <li>Tablero de control con KPIs de liquidez y rentabilidad.</li>
-</ul>
-
-<h2>Resultados probados</h2>
-<ul>
-  <li>Reducción del ciclo de cierre IFRS en 15 % mediante automatización de reportes.</li>
-  <li>Framework analítico que mejoró la toma de decisiones en 7 compañías multinacionales.</li>
+  <li>Presupuesto anual y rolling-forecast.</li>
+  <li>Escenario base, optimista y conservador.</li>
+  <li>Dashboards interactivos (KPIs de liquidez y rentabilidad).</li>
 </ul>
 
 <footer>© 2025 HazelRo • Bogotá-Colombia</footer>
