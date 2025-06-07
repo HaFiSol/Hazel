@@ -1,26 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
-<head><meta charset="utf-8"><title>Optimización de Costos • HazelRo</title><link rel="stylesheet" href="/styles.css"></head>
+<head>
+  <meta charset="utf-8">
+  <title>Optimización de Costos • HazelRo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#FFD700;--bg:#000;--font:#e6e6e6}
+    *{box-sizing:border-box;margin:0;padding:0;font-family:"Inter",sans-serif}
+    body{background:var(--bg);color:var(--font);line-height:1.6;padding:1rem 2rem;max-width:1000px;margin:auto}
+    a{color:var(--accent);text-decoration:none}
+    header{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
+    h1{color:var(--accent);font-size:2rem;margin-bottom:1rem}
+    h2{margin:2.5rem 0 1rem;color:var(--accent);font-size:1.3rem}
+    footer{margin-top:3rem;font-size:.9rem;color:#888;text-align:center}
+    .flow{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem}
+    .step{flex:1 1 220px;min-width:220px;background:#111;border:2px solid var(--accent);border-radius:.75rem;padding:1.2rem;text-align:center;position:relative}
+    .step h3{color:var(--accent);font-size:1.15rem;margin-bottom:.5rem}
+    .step p{font-size:.9rem}
+    .step:after{content:'';position:absolute;right:-1.5rem;top:50%;width:1.5rem;height:.25rem;background:var(--accent)}
+    .step:last-child:after{display:none}
+    @media(max-width:640px){.flow{gap:2.5rem}.step:after{display:none}}
+  </style>
+</head>
 <body>
-<header class="navbar">…mismo header…</header>
 
-<main class="container">
-  <section class="hero">
-    <h1>Optimización de Costos Operativos</h1>
-    <p>Reduce OPEX hasta 10 % identificando actividades no productivas y rediseñando procesos.:contentReference[oaicite:5]{index=5}</p>
-  </section>
+<header>
+  <a href="/">Inicio</a> |
+  <a href="/financial-planning.html">Planeación</a> |
+  <a href="/project-evaluation.html">Evaluación de Proyectos</a> |
+  <span>Optimización de Costos</span>
+</header>
 
-  <h2>Servicios incluidos</h2>
-  <ul>
-    <li>Mapeo de procesos y análisis de valor.</li>
-    <li>Benchmarking interno vs. mejores prácticas del sector.</li>
-    <li>Implementación de KPIs y dashboards en SAP/Power BI.</li>
-  </ul>
+<h1>Optimización de Costos Operativos</h1>
 
-  <h2>Logro clave</h2>
-  <p>Ahorro anual de ~USD 30 millones (-10 % OPEX) en Mansarovar Energy gracias a la eliminación de actividades no productivas y nuevos centros de costo.:contentReference[oaicite:6]{index=6}</p>
-</main>
+<div class="flow">
+  <div class="step">
+    <h3>Análisis</h3>
+    <p>Diagnóstico de procesos y estructura de costos.</p>
+  </div>
+  <div class="step">
+    <h3>Identificación</h3>
+    <p>Detección de tareas de bajo valor y oportunidades de ahorro.</p>
+  </div>
+  <div class="step">
+    <h3>Implementación</h3>
+    <p>Rediseño de procesos y establecimiento de KPIs.</p>
+  </div>
+  <div class="step">
+    <h3>Resultado</h3>
+    <p>Reducción de OPEX y mejoras de eficiencia sostenibles.</p>
+  </div>
+</div>
 
-<footer class="footer">© 2025 HazelRo</footer>
+<h2>Entregables</h2>
+<ul>
+  <li>Mapa de procesos y quick-wins.</li>
+  <li>Plan de ahorro cuantificado.</li>
+  <li>Tableros de seguimiento (Power BI / Excel).</li>
+</ul>
+
+<footer>© 2025 HazelRo • Bogotá-Colombia</footer>
 </body>
 </html>
