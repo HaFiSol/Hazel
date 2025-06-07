@@ -11,13 +11,11 @@
     body{background:var(--bg);color:var(--font);line-height:1.6;padding:1rem 2rem;max-width:1000px;margin:auto}
     a{color:var(--accent);text-decoration:none}
     header{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
-    header a{font-weight:500}
-    h1{color:var(--accent);font-size:2rem;margin-bottom:1rem}
+    h1{color:var(--accent);font-size:2rem;margin-bottom:.75rem}
     h2{margin:2.5rem 0 1rem;color:var(--accent);font-size:1.3rem}
     footer{margin-top:3rem;font-size:.9rem;color:#888;text-align:center}
-
-    /* ---- Proceso en línea ---- */
-    .flow{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem}
+    /* ---- Proceso ---- */
+    .flow{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem;margin-top:2.5rem}
     .step{flex:1 1 220px;min-width:220px;background:#111;border:2px solid var(--accent);border-radius:.75rem;padding:1.2rem;text-align:center;position:relative}
     .step h3{color:var(--accent);font-size:1.15rem;margin-bottom:.5rem}
     .step p{font-size:.9rem}
@@ -38,29 +36,18 @@
 <h1>Planeación Financiera Estratégica</h1>
 
 <div class="flow">
-  <div class="step">
-    <h3>Diagnóstico</h3>
-    <p>Revisión de proyecciones, supuestos clave y capacidad de generación de caja.</p>
-  </div>
-  <div class="step">
-    <h3>Modelado</h3>
-    <p>Construcción de presupuesto maestro y escenarios “what-if” en horizonte anual y plurianual.</p>
-  </div>
-  <div class="step">
-    <h3>Ejecución</h3>
-    <p>Implementación de controles, dashboards e indicadores de desempeño.</p>
-  </div>
-  <div class="step">
-    <h3>Seguimiento</h3>
-    <p>Reforecast trimestral y recomendaciones tácticas para cumplir metas.</p>
-  </div>
+  <div class="step"><h3>1&nbsp;•&nbsp;Estrategia</h3><p>Definir metas y supuestos clave.</p></div>
+  <div class="step"><h3>2&nbsp;•&nbsp;Forecast</h3><p>Escenarios driver-based y rolling.</p></div>
+  <div class="step"><h3>3&nbsp;•&nbsp;Recursos</h3><p>CapEx, OPEX, talento y cuellos de botella.</p></div>
+  <div class="step"><h3>4&nbsp;•&nbsp;EEFF&nbsp;Integrados</h3><p>Estado de resultados, balance y cash-flow.</p></div>
+  <div class="step"><h3>5&nbsp;•&nbsp;Seguimiento</h3><p>Reforecast trimestral y planes de acción.</p></div>
 </div>
 
 <h2>Entregables</h2>
 <ul>
   <li>Presupuesto anual y rolling-forecast.</li>
-  <li>Escenario base, optimista y conservador.</li>
-  <li>Dashboards interactivos (KPIs de liquidez y rentabilidad).</li>
+  <li>Escenarios base, upside, downside.</li>
+  <li>Dashboards de KPIs.</li>
 </ul>
 
 <footer>© 2025 HazelRo • Bogotá-Colombia</footer>
