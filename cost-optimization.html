@@ -10,41 +10,128 @@
     *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',Arial,sans-serif}
     body{background:var(--bg);color:var(--font);line-height:1.6}
     a{color:var(--accent);text-decoration:none}
-    header{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid #222}
+
+    /* ── Encabezado ─────────────────────────── */
+    header{display:flex;justify-content:space-between;align-items:center;
+           padding:1rem 2rem;border-bottom:1px solid #222;flex-wrap:wrap}
     .logo{display:flex;align-items:center;gap:.6rem}
     .logo img{width:32px;height:32px}
     .logo span{font-size:1.3rem;font-weight:700;color:var(--accent)}
-    .hero{max-width:920px;margin:0 auto;padding:5rem 1rem}
-    .hero h1{font-size:2rem;color:var(--accent);margin-bottom:1.2rem}
-    .hero p{margin-bottom:1.6rem}
-    .hero ul{list-style:disc;padding-left:1.2rem;font-size:.9rem}
+    nav a{margin-inline:.5rem;font-weight:600}
+
+    /* ── Contenido principal ────────────────── */
+    .wrap{max-width:1000px;margin:0 auto;padding:5rem 1rem}
+    h1{color:var(--accent);font-size:2rem;margin-bottom:.9rem}
+    p.intro{margin-bottom:1.8rem}
+
+    /* ── Flujo de proceso ───────────────────── */
+    .flow{display:flex;flex-wrap:wrap;gap:1.6rem;margin-top:1.8rem}
+    .step{
+      flex:1 1 250px;background:#111;border:2px solid var(--accent);
+      border-radius:.75rem;padding:1.4rem;position:relative
+    }
+    .step h3{color:var(--accent);font-size:1.12rem;margin-bottom:.55rem}
+    .step p{font-size:.9rem}
+    .step:after{
+      content:'';position:absolute;right:-1.6rem;top:50%;width:1.6rem;height:.28rem;
+      background:var(--accent)
+    }
+    .step:last-child:after{display:none}
+
+    /* ── Entregables ────────────────────────── */
+    h2{color:var(--accent);font-size:1.3rem;margin:2.6rem 0 1rem}
+    ul{list-style:disc;padding-left:1.2rem;font-size:.9rem}
+
+    /* ── Pie de página ──────────────────────── */
     footer{margin-top:4rem;padding:2rem 1rem;text-align:center;font-size:.85rem;color:#888}
+
+    /* ── Responsive ─────────────────────────── */
+    @media(max-width:640px){
+      .step{flex:1 1 100%}
+      .step:after{display:none}
+      nav{margin-top:.7rem;width:100%;display:flex;flex-wrap:wrap;gap:.4rem}
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <a href="/" class="logo"><img src="/hazelro-logo.png" alt="HazelRo"><span>HazelRo</span></a>
-  <nav><a href="/">Inicio</a></nav>
+  <a href="/" class="logo">
+    <img src="/hazelro-logo.png" alt="HazelRo">
+    <span>HazelRo</span>
+  </a>
+  <nav>
+    <a href="/">Inicio</a> |
+    <a href="/planeacion-financiera.html">Planeación</a> |
+    <a href="/evaluacion-proyectos.html">Evaluación</a> |
+    <span>Optimización</span> |
+    <a href="/outsourcing-contable.html">Outsourcing</a> |
+    <a href="/asesoria-tributaria-pn.html">Tributaria&nbsp;PN</a>
+  </nav>
 </header>
 
-<section class="hero">
+<div class="wrap">
   <h1>Optimización de Costos Operativos</h1>
-  <p>
-    Diseñamos e implantamos iniciativas de eficiencia que reducen gastos sin comprometer
-    calidad ni crecimiento. Combinamos análisis detallado de procesos, tecnología y
-    gobernanza para generar ahorros recurrentes y medibles.
+  <p class="intro">
+    Elevamos tu rentabilidad mediante un ciclo estructurado que identifica ineficiencias,
+    prioriza iniciativas de ahorro y asegura resultados sostenibles sin sacrificar calidad ni
+    capacidad de crecimiento.
   </p>
+
+  <!-- Flujo de proceso -->
+  <div class="flow">
+    <div class="step">
+      <h3>1&nbsp;• Análisis&nbsp;y Medición</h3>
+      <p>
+        Recopilamos datos detallados por producto, proceso y centro de costo usando costeo
+        tradicional y ABC. Calculamos <em>driver-rates</em> y establecemos la línea base de gasto.
+      </p>
+    </div>
+
+    <div class="step">
+      <h3>2&nbsp;• Identificación de Oportunidades</h3>
+      <p>
+        Aplicamos Pareto 80/20, cadena de valor y criterios Lean para detectar desperdicios,
+        cuellos de botella, inventarios excesivos y proveedores costosos.
+      </p>
+    </div>
+
+    <div class="step">
+      <h3>3&nbsp;• Evaluación &amp; Objetivos</h3>
+      <p>
+        Analizamos costo-beneficio de cada iniciativa, simulamos el impacto en calidad y
+        servicio, y fijamos metas cuantificadas (p.&nbsp;ej. –10 % en logística).
+      </p>
+    </div>
+
+    <div class="step">
+      <h3>4&nbsp;• Implementación</h3>
+      <p>
+        Ejecutamos reingeniería de procesos, automatización RPA, negociaciones de
+        suministro y mejoras de diseño con <em>quick&nbsp;wins</em> en 90 días.
+      </p>
+    </div>
+
+    <div class="step">
+      <h3>5&nbsp;• Monitoreo y Mejora Continua</h3>
+      <p>
+        Integramos KPIs OPEX en FP&amp;A, auditamos ahorros logrados y activamos cultura
+        Kaizen para nuevas ideas de eficiencia.
+      </p>
+    </div>
+  </div>
+
+  <h2>Entregables</h2>
   <ul>
-    <li>Mapeo Lean de procesos y detección de actividades sin valor agregado.</li>
-    <li>Rediseño de contratos, estructura de compras y políticas de inventario.</li>
-    <li>Indicadores OPEX / KPIs con alertas de variación y analítica avanzada.</li>
-    <li>Plan de implementación con quick-wins y metas trimestrales verificables.</li>
+    <li>Informe de diagnóstico con desglose 80/20 y benchmarks sectoriales.</li>
+    <li>Roadmap de ahorro a 12 meses con ROI y responsables.</li>
+    <li>Dashboard Power BI OPEX vs presupuesto y alertas.</li>
+    <li>Modelo de gobernanza de costos y manual de KPIs.</li>
   </ul>
-</section>
+</div>
 
 <footer>
-  Tel: <strong>+57 321 206 3866</strong> &nbsp;|&nbsp;
+  Tel: <strong>+57&nbsp;321&nbsp;206&nbsp;3866</strong> &nbsp;|&nbsp;
   Email: <a href="mailto:asesor@hazelro.com">asesor@hazelro.com</a><br>
   © 2025 HazelRo • Bogotá-Colombia
 </footer>
