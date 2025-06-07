@@ -1,75 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <title>HazelRo | Servicios Financieros</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    /* ───── Colores & fuente ───────────────── */
-    :root{--accent:#FFE600;--bg:#000;--font:#E6E6E6}
-    *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter','Helvetica Neue',Arial,sans-serif}
-    body{background:var(--bg);color:var(--font);line-height:1.6}
-    a{color:var(--accent);text-decoration:none}
+<meta charset="utf-8">
+<title>HazelRo | Servicios Financieros</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#FFCD00;--bg:#000;--font:#E6E6E6}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Inter','Helvetica Neue',Arial,sans-serif}
+body{background:var(--bg);color:var(--font);line-height:1.6}
+a{color:var(--accent);text-decoration:none}
 
-    /* ───── Header ─────────────────────────── */
-    header{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid #222}
-    .logo-wrap{display:flex;align-items:center;gap:.65rem}
-    .logo-img{width:36px;height:36px}
-    .logo-text{font-size:1.4rem;font-weight:700;color:var(--accent)}
-    nav a{margin-inline:.6rem;font-weight:600}
+/* Header */
+header{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid #222}
+.logo-wrap{display:flex;align-items:center;gap:.6rem}
+.logo-img{width:36px;height:36px}
+.logo-text{font-size:1.35rem;font-weight:700;color:var(--accent)}
+nav a{margin-inline:.6rem;font-weight:600}
 
-    /* ───── Título flotante ────────────────── */
-    .hero-title{position:absolute;top:1.8rem;left:50%;transform:translateX(-50%);
-                font-size:2.1rem;font-weight:700;color:var(--accent);text-align:center;
-                line-height:1.25;padding:0 1rem}
+/* Título flotante */
+.hero-title{
+  position:absolute;top:3rem;left:50%;transform:translateX(-50%);
+  font-size:1.9rem;font-weight:700;color:var(--accent);text-align:center;line-height:1.25}
+@media(max-width:640px){.hero-title{position:static;transform:none;margin:2rem 0 1.2rem}}
 
-    /* ───── Hero layout ────────────────────── */
-    .hero{position:relative;max-width:1000px;margin:0 auto;padding:5rem 1rem 6rem;
-          display:flex;flex-wrap:wrap;align-items:center}
-    .desc{flex:1 1 260px;max-width:380px;margin-right:-5rem}
-    .desc p{margin-bottom:1.4rem}
-    .desc ul{list-style:disc;padding-left:1.2rem;margin:1.2rem 0 0;font-size:.9rem}
+/* Hero */
+.hero{position:relative;max-width:1000px;margin:0 auto;padding:6rem 1rem 6rem;
+      display:flex;flex-wrap:wrap;align-items:center}
+.desc{flex:1 1 260px;max-width:380px;margin-right:-5rem}
+.desc p{margin-bottom:1.4rem}
+.desc ul{list-style:disc;padding-left:1.2rem;margin:1.2rem 0;font-size:.9rem}
+.half{position:relative;width:min(85vw,480px);height:min(85vw,480px);flex:1 1 480px}
+.half::before{content:'';position:absolute;inset:0;border-radius:0 50% 50% 0;
+              background:url('/hazelro-logo.png') center/70% no-repeat,var(--bg);opacity:.10}
 
-    /* ───── Medio círculo ──────────────────── */
-    .half{position:relative;width:min(85vw,480px);height:min(85vw,480px);flex:1 1 480px}
-    .half::before{content:'';position:absolute;inset:0;border-radius:0 50% 50% 0;
-                  background:url('/hazelro-logo.png') center/70% no-repeat,var(--bg);opacity:.10}
+/* Nodos */
+.nodes{position:absolute;inset:0}
+.node{position:absolute;width:95px;height:95px;border-radius:50%;background:#111;
+      border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;
+      padding:.55rem;text-align:center;font-size:.78rem;font-weight:600;color:var(--font);
+      transition:transform .25s,background .25s,color .25s;cursor:pointer}
+.node:hover{background:var(--accent);color:#000;transform:scale(1.06)}
+.s1{top:4%;  left:74%}
+.s2{top:26%; left:87%}
+.s3{top:48%; left:90%}
+.s4{top:70%; left:87%}
+.s5{top:90%; left:74%}
 
-    /* ───── Nodos ──────────────────────────── */
-    .nodes{position:absolute;inset:0}
-    .node{position:absolute;width:95px;height:95px;border-radius:50%;background:#111;
-          border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;
-          padding:.55rem;text-align:center;font-size:.78rem;font-weight:600;color:var(--font);
-          transition:transform .25s,background .25s,color .25s;cursor:pointer}
-    .node:hover{background:var(--accent);color:#000;transform:scale(1.06)}
-    /* Posiciones reloj */
-    .s1{top:4%;  left:74%}   /* 12 */
-    .s2{top:26%; left:87%}   /*  2 */
-    .s3{top:48%; left:90%}   /*  4 */
-    .s4{top:70%; left:87%}   /*  5 */
-    .s5{top:90%; left:74%}   /*  6 */
-
-    /* ───── Responsive ─────────────────────── */
-    @media(max-width:640px){
-      .hero-title{position:static;transform:none;margin-bottom:2rem;font-size:1.8rem}
-      .node{width:85px;height:85px;font-size:.7rem;padding:.45rem}
-      .half{width:100%;height:380px}
-      .desc{margin-right:0;margin-bottom:2.5rem}
-    }
-
-    /* ───── Footer ─────────────────────────── */
-    footer{margin-top:4rem;padding:2rem 1rem;text-align:center;font-size:.85rem;color:#888}
-  </style>
+/* Footer */
+footer{margin-top:4rem;padding:2rem 1rem;text-align:center;font-size:.85rem;color:#888}
+@media(max-width:640px){
+  .node{width:85px;height:85px;font-size:.7rem;padding:.45rem}
+  .half{width:100%;height:380px}
+  .desc{margin-right:0;margin-bottom:2rem}
+}
+</style>
 </head>
 <body>
+
 <header>
-  <a href="/" class="logo-wrap">
-    <img src="/hazelro-logo.png" alt="HazelRo" class="logo-img">
-    <span class="logo-text">HazelRo</span>
-  </a>
+  <a href="/" class="logo-wrap"><img src="/hazelro-logo.png" alt="HazelRo" class="logo-img"><span class="logo-text">HazelRo</span></a>
   <nav>
-    <a href="/">Inicio</a> |
+    <span>Inicio</span> |
     <a href="/financial-planning.html">Planeación</a> |
     <a href="/project-evaluation.html">Evaluación</a> |
     <a href="/cost-optimization.html">Optimización</a> |
@@ -81,14 +73,11 @@
 <h1 class="hero-title">Transforma tus Finanzas<br>en Ventaja Competitiva</h1>
 
 <section class="hero">
-  <!-- Texto vendedor -->
   <div class="desc">
-    <p>
-      En HazelRo convertimos números en estrategia y procesos en resultados.
-      Nuestro equipo diseña, implementa y orquesta la arquitectura financiera
-      que impulsa <strong>crecimiento rentable</strong>, libera caja y mitiga
-      riesgos en cada etapa del negocio.
-    </p>
+    <p>En HazelRo convertimos números en estrategia y procesos en resultados. 
+       Nuestro equipo diseña, implementa y orquesta la arquitectura financiera 
+       que impulsa <strong>crecimiento rentable</strong>, libera caja y mitiga 
+       riesgos en cada etapa del negocio.</p>
 
     <ul>
       <li><strong>Planeación Financiera</strong> basada en <em>drivers</em>.</li>
@@ -99,7 +88,6 @@
     </ul>
   </div>
 
-  <!-- Medio círculo + nodos -->
   <div class="half">
     <div class="nodes">
       <a class="node s1" href="/financial-planning.html">Planeación<br>Financiera</a>
@@ -112,9 +100,9 @@
 </section>
 
 <footer>
-  <p>Tel: <a href="tel:+573212063866">+57 321 206 3866</a> &nbsp;|&nbsp;
-     Email: <a href="mailto:asesor@hazelro.com">asesor@hazelro.com</a></p>
-  <p>© 2025 HazelRo • Bogotá-Colombia</p>
+  Tel: <a href="tel:+573212063866">+57&nbsp;321&nbsp;206&nbsp;3866</a> &nbsp;|&nbsp; 
+  Email: <a href="mailto:asesor@hazelro.com">asesor@hazelro.com</a><br>
+  © 2025 HazelRo • Bogotá-Colombia
 </footer>
 </body>
 </html>
