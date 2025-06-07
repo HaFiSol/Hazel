@@ -37,11 +37,12 @@
       .half{height:400px}
     }
     /* Texto descriptivo al lado plano */
-    .desc{flex:1 1 260px;max-width:380px;margin-right:-2rem}
+    .desc{flex:1 1 260px;max-width:380px;margin-right:-5rem} /* acercar texto al árbol */
     .desc h1{font-size:2.3rem;color:var(--accent);margin-bottom:1rem}
     .desc p{margin-bottom:1.5rem}
     .btn{display:inline-block;padding:.8rem 1.6rem;background:var(--accent);color:#000;font-weight:600;border-radius:.5rem;transition:background .25s}
     .btn:hover{background:#cb9f00}
+    @media(max-width:640px){.desc{margin-right:0}}
     /* Footer */
     footer{margin-top:4rem;padding:2rem 1rem;text-align:center;font-size:.85rem;color:#888}
   </style>
@@ -74,6 +75,9 @@
     </div>
   </div>
 </section>
-<footer>© 2025 HazelRo • Bogotá‑Colombia</footer>
+<footer>
+  <p>Teléfono: <a href="tel:+573212063866">+57&nbsp;321&nbsp;206&nbsp;3866</a> &nbsp;|&nbsp; Email: <a href="mailto:asesor@hazelro.com">asesor@hazelro.com</a></p>
+  <p>© 2025 HazelRo • Bogotá‑Colombia</p>
+</footer>
 </body>
 </html>
