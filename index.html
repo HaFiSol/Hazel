@@ -10,45 +10,61 @@
     :root{--accent:#E6B800;--bg:#000;--font:#e6e6e6}
     *{box-sizing:border-box;margin:0;padding:0;font-family:"Inter",sans-serif}
     body{background:var(--bg);color:var(--font);line-height:1.6}
+
+    /* ─── Links ─ */
     a{color:var(--accent);text-decoration:none}
+
     /* ─── Header ─ */
     header{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid #222}
-    .logo-wrap{display:flex;align-items:center;gap:.7rem}
+    .logo-wrap{display:flex;align-items:center;gap:.75rem}
     .logo-img{width:38px;height:38px}
     .logo-text{font-size:1.45rem;font-weight:700;letter-spacing:.05rem;color:var(--accent)}
     nav a{margin-inline:.7rem;font-weight:500}
-    /* ─── Hero layout ─ */
-    .hero{max-width:1000px;margin:0 auto;padding:4rem 1rem 6rem;display:flex;gap:0;align-items:center;flex-wrap:wrap}
-    /* flat-left half‑circle container */
-    .half{position:relative;width:min(85vw,480px);height:min(85vw,480px);flex:1 1 480px}
-    .half::before{content:"";position:absolute;inset:0;border-radius:0 50% 50% 0;background:url('/hazelro-logo.png') center/70% no-repeat,var(--bg);opacity:.10}
-    .nodes{position:absolute;inset:0}
-    .node{position:absolute;width:100px;height:100px;border-radius:50%;background:#111;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;text-align:center;padding:.6rem;font-size:.78rem;font-weight:600;transition:transform .25s,background .25s,color .25s;cursor:pointer}
-    .node:hover{background:var(--accent);color:#000;transform:scale(1.06)}
-    /* ─── Posiciones de los 5 nodos (reloj) ─ */
-    .s1{top:3%;left:74%}   /* 12 en punto */
-    .s2{top:24%;left:88%}  /* 2 en punto */
-    .s3{top:46%;left:91%}  /* 4 en punto */
-    .s4{top:68%;left:88%}  /* 5 en punto */
-    .s5{top:88%;left:74%}  /* 6 en punto */
 
-    @media(max-width:640px){.node{width:85px;height:85px;padding:.45rem;font-size:.7rem}.half{height:380px}}
-      .half{height:400px}
-    }
-    /* Texto descriptivo al lado plano */
-    .desc{flex:1 1 260px;max-width:380px;margin-right:-5rem}
+    /* ─── Hero layout ─ */
+    .hero{max-width:1000px;margin:0 auto;padding:4rem 1rem 6rem;display:flex;flex-wrap:wrap;align-items:center}
+    .desc{flex:1 1 280px;max-width:380px;margin-right:-5rem}
     .desc h1{font-size:2.3rem;color:var(--accent);margin-bottom:1rem}
-    .desc p{margin-bottom:1.5rem}
-    .btn{display:inline-block;padding:.8rem 1.6rem;background:var(--accent);color:#000;font-weight:600;border-radius:.5rem;transition:background .25s}
+    .desc p{margin-bottom:1.6rem}
+    .btn{display:inline-block;padding:.85rem 1.7rem;background:var(--accent);color:#000;font-weight:600;border-radius:.5rem;transition:background .25s}
     .btn:hover{background:#cb9f00}
-    @media(max-width:640px){.desc{margin-right:0}}
-    /* Footer */
+
+    /* ─── Medio círculo ─ */
+    .half{position:relative;width:min(85vw,480px);height:min(85vw,480px);flex:1 1 480px}
+    .half::before{content:'';position:absolute;inset:0;border-radius:0 50% 50% 0;
+                  background:url('/hazelro-logo.png') center/70% no-repeat,var(--bg);opacity:.10}
+
+    /* ─── nodos ─ */
+    .nodes{position:absolute;inset:0}
+    .node{position:absolute;width:100px;height:100px;border-radius:50%;background:#111;
+          border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;
+          text-align:center;padding:.6rem;font-size:.78rem;font-weight:600;cursor:pointer;
+          transition:transform .25s,background .25s,color .25s}
+    .node:hover{background:var(--accent);color:#000;transform:scale(1.06)}
+
+    /* posiciones reloj 12-2-4-5-6 */
+    .s1{top:3%;  left:74%}
+    .s2{top:23%; left:87%}
+    .s3{top:43%; left:90%}
+    .s4{top:63%; left:87%}
+    .s5{top:83%; left:74%}
+
+    /* ─── Responsive ─ */
+    @media(max-width:640px){
+      .node{width:85px;height:85px;padding:.45rem;font-size:.7rem}
+      .half{width:100%;height:380px}
+      .desc{margin-right:0;margin-bottom:2.5rem}
+    }
+
+    /* ─── Footer ─ */
     footer{margin-top:4rem;padding:2rem 1rem;text-align:center;font-size:.85rem;color:#888}
   </style>
 </head>
 <body>
 <header>
-  <a href="/" class="logo-wrap"><img class="logo-img" src="/hazelro-logo.png" alt="HazelRo"/><span class="logo-text">HazelRo</span></a>
+  <a href="/" class="logo-wrap">
+    <img class="logo-img" src="/hazelro-logo.png" alt="HazelRo"><span class="logo-text">HazelRo</span>
+  </a>
   <nav>
     <a href="/">Inicio</a> |
     <a href="/financial-planning.html">Planeación</a> |
@@ -58,25 +74,30 @@
     <a href="/tax-advice.html">Asesoría Tributaria PN</a>
   </nav>
 </header>
+
 <section class="hero">
+  <!-- Texto -->
   <div class="desc">
     <h1>Servicios Financieros</h1>
     <p>Soluciones profesionales para planear, evaluar y optimizar las finanzas de tu negocio, garantizando decisiones informadas y eficiencia sostenible.</p>
     <a class="btn" href="mailto:asesor@hazelro.com?subject=Consulta%20HazelRo">Solicitar diagnóstico gratuito</a>
   </div>
+
+  <!-- Medio círculo + nodos -->
   <div class="half">
     <div class="nodes">
-      <a class="node s1" href="/financial-planning.html">Planeación<br/>Financiera</a>
-      <a class="node s2" href="/project-evaluation.html">Evaluación<br/>de Proyectos</a>
-      <a class="node s3" href="/cost-optimization.html">Optimización<br/>de Costos</a>
-      <a class="node s4" href="/outsourcing.html">Outsourcing<br/>Contable</a>
-      <a class="node s5" href="/tax-advice.html">Asesoría<br/>Tributaria PN</a>
+      <a class="node s1" href="/financial-planning.html">Planeación<br>Financiera</a>
+      <a class="node s2" href="/project-evaluation.html">Evaluación<br>de Proyectos</a>
+      <a class="node s3" href="/cost-optimization.html">Optimización<br>de Costos</a>
+      <a class="node s4" href="/outsourcing.html">Outsourcing<br>Contable</a>
+      <a class="node s5" href="/tax-advice.html">Asesoría<br>Tributaria PN</a>
     </div>
   </div>
 </section>
+
 <footer>
   <p>Teléfono: <a href="tel:+573212063866">+57&nbsp;321&nbsp;206&nbsp;3866</a> &nbsp;|&nbsp; Email: <a href="mailto:asesor@hazelro.com">asesor@hazelro.com</a></p>
-  <p>© 2025 HazelRo • Bogotá‑Colombia</p>
+  <p>© 2025 HazelRo • Bogotá-Colombia</p>
 </footer>
 </body>
 </html>
