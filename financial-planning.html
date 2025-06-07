@@ -3,39 +3,50 @@
 <head>
   <meta charset="utf-8">
   <title>Planeación Financiera • HazelRo</title>
-  <link rel="stylesheet" href="/styles.css"><!-- (usa el mismo CSS global) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#FFD700;--bg:#000;--font:#e6e6e6}
+    *{box-sizing:border-box;margin:0;padding:0;font-family:"Inter",sans-serif}
+    body{background:var(--bg);color:var(--font);line-height:1.6;padding:1rem 2rem;max-width:900px;margin:auto}
+    a{color:var(--accent);text-decoration:none}
+    header{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+    header a{font-weight:500}
+    h1{color:var(--accent);margin-bottom:1rem;font-size:2rem}
+    h2{margin:2rem 0 1rem;color:var(--accent);font-size:1.5rem}
+    ul{margin-left:1.25rem}
+    footer{margin-top:3rem;font-size:.9rem;color:#888;text-align:center}
+    .btn{display:inline-block;margin-top:1rem;padding:.6rem 1.3rem;background:var(--accent);color:#000;border-radius:.4rem;font-weight:600}
+  </style>
 </head>
 <body>
-<header class="navbar">
-  <a href="/" class="logo">HazelRo</a>
-  <nav><a href="/">Inicio</a> | Planeación | <a href="/project-evaluation.html">Evaluación de Proyectos</a> | <a href="/cost-optimization.html">Optimización de Costos</a></nav>
+
+<header>
+  <a href="/">Inicio</a> |
+  <span>Planeación</span> |
+  <a href="/project-evaluation.html">Evaluación de Proyectos</a> |
+  <a href="/cost-optimization.html">Optimización de Costos</a>
 </header>
 
-<main class="container">
-  <section class="hero">
-    <h1>Planeación Financiera Estratégica</h1>
-    <p>Más de 20 años liderando procesos de FP&A en Oil & Gas y otros sectores, con enfoque en presupuestos CapEx/OpEx y modelos predictivos de escenarios.:contentReference[oaicite:0]{index=0}</p>
-    <a class="btn" href="mailto:asesor@hazelro.com?subject=Planeación%20Financiera">Solicitar diagnóstico gratuito</a>
-  </section>
+<h1>Planeación Financiera Estratégica</h1>
 
-  <section>
-    <h2>Qué obtienes</h2>
-    <ul>
-      <li>Presupuesto anual, trimestral y rolling-forecast listo para junta directiva.</li>
-      <li>Modelo de sensibilidad en Python para evaluar variables clave (precio crudo, tipo de cambio, etc.).</li>
-      <li>Tablero de control con KPIs de liquidez y rentabilidad.</li>
-    </ul>
-  </section>
+<p>Más de 20&nbsp;años liderando procesos de FP&amp;A en Oil &amp; Gas y otros sectores, con enfoque en <strong>presupuestos CapEx/OpEx</strong> y modelos predictivos de escenarios.</p>
 
-  <section>
-    <h2>Resultados probados</h2>
-    <ul>
-      <li>Reducción del ciclo de cierre IFRS en 15 % mediante automatización de reportes.:contentReference[oaicite:1]{index=1}</li>
-      <li>Framework analítico que mejoró la claridad de decisiones para 7 entidades multinacionales.:contentReference[oaicite:2]{index=2}</li>
-    </ul>
-  </section>
-</main>
+<a class="btn" href="mailto:asesor@hazelro.com?subject=Diagnóstico%20Planeación">Solicitar diagnóstico gratuito</a>
 
-<footer class="footer">© 2025 HazelRo • Bogotá-Colombia</footer>
+<h2>Qué obtienes</h2>
+<ul>
+  <li>Presupuesto anual, trimestral y rolling-forecast listo para junta directiva.</li>
+  <li>Modelo de sensibilidad en Python para evaluar variables clave (precio crudo, tipo de cambio, etc.).</li>
+  <li>Tablero de control con KPIs de liquidez y rentabilidad.</li>
+</ul>
+
+<h2>Resultados probados</h2>
+<ul>
+  <li>Reducción del ciclo de cierre IFRS en 15 % mediante automatización de reportes.</li>
+  <li>Framework analítico que mejoró la toma de decisiones en 7 compañías multinacionales.</li>
+</ul>
+
+<footer>© 2025 HazelRo • Bogotá-Colombia</footer>
 </body>
 </html>
