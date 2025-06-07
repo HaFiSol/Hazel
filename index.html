@@ -4,39 +4,44 @@
   <meta charset="utf-8" />
   <title>HazelRo | Servicios Financieros</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!--  Favicon opcional: descomenta si lo deseas  -->
+  <!--  Favicon opcional -->
   <!-- <link rel="icon" type="image/png" href="/hazelro-logo.png" /> -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet" />
   <style>
-    :root{--accent:#FFD700;--bg:#000;--font:#e6e6e6}
+    /* Paleta oro más suave */
+    :root{--accent:#E6B800;--bg:#000;--font:#e6e6e6}
     *{box-sizing:border-box;margin:0;padding:0;font-family:"Inter",sans-serif}
     body{background:var(--bg);color:var(--font);line-height:1.6}
     a{color:var(--accent);text-decoration:none}
 
-    /* ─── Header ─────────────────────────────────────── */
+    /* ─── Header ─────────────────────────────────────────── */
     header{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:var(--bg);border-bottom:1px solid #222}
     .logo-wrap{display:flex;align-items:center;gap:.75rem}
-    .logo-img{width:42px;height:42px;object-fit:contain}
-    .logo-text{font-size:1.5rem;font-weight:700;letter-spacing:.05rem;color:var(--accent)}
+    .logo-img{width:40px;height:40px;object-fit:contain}
+    .logo-text{font-size:1.45rem;font-weight:700;letter-spacing:.05rem;color:var(--accent)}
     nav a{margin-inline:.75rem;font-weight:500}
 
-    /* ─── Hero / Radial service map ─────────────────── */
+    /* ─── Hero ───────────────────────────────────────────── */
     .hero{max-width:960px;margin:0 auto;padding:4rem 1rem;text-align:center;position:relative}
-    .hero h1{font-size:2.5rem;color:var(--accent);margin:2.5rem 0 1.5rem}
+    .hero h1{font-size:2.4rem;color:var(--accent);margin:2.5rem 0 1.5rem}
     .hero p{max-width:680px;margin:0 auto 1.75rem}
-    .btn{display:inline-block;padding:.8rem 1.6rem;background:var(--accent);color:#000;border-radius:.5rem;font-weight:600}
+    .btn{display:inline-block;padding:.8rem 1.6rem;background:var(--accent);color:#000;border:none;border-radius:.5rem;font-weight:600;transition:background .25s ease}
+    .btn:hover{background:#d0a400}
 
-    .radial{position:relative;width:min(90vw,680px);height:min(90vw,680px);margin:4rem auto}
-    .central{position:absolute;inset:0;border-radius:50%;background:url('/hazelro-logo.png') center/90% no-repeat;opacity:.18;pointer-events:none}
+    /* ─── Radial service map ─────────────────────────────── */
+    .radial{position:relative;width:min(90vw,640px);height:min(90vw,640px);margin:4rem auto}
+    /* logo de fondo más pequeño y tenue */
+    .central{position:absolute;inset:0;border-radius:50%;background:url('/hazelro-logo.png') center/70% no-repeat;opacity:.10;pointer-events:none}
+
     .node{position:absolute;width:140px;height:140px;border-radius:50%;background:#111;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;cursor:pointer;transition:transform .25s ease,color .25s ease,background .25s ease}
     .node:hover{background:var(--accent);color:#000;transform:scale(1.05)}
     .node span{font-size:.9rem;font-weight:600}
     .node.plan{top:50%;left:0;transform:translate(-50%,-50%)}
     .node.eval{top:0;left:50%;transform:translate(-50%,-50%)}
     .node.cost{top:50%;left:100%;transform:translate(-50%,-50%)}
-    @media(max-width:640px){.node{width:110px;height:110px;padding:.75rem;font-size:.8rem}}
+    @media(max-width:640px){.node{width:110px;height:110px;padding:.75rem}.node span{font-size:.8rem}}
 
-    /* ─── Footer ─────────────────────────────────────── */
+    /* ─── Footer ─────────────────────────────────────────── */
     footer{margin-top:4rem;padding:2rem 1rem;text-align:center;font-size:.85rem;color:#888}
   </style>
 </head>
@@ -59,8 +64,8 @@
 </header>
 
 <section class="hero">
-  <h1>Asesoría Financiera Integral</h1>
-  <p>Soluciones profesionales en planeación, valoración y ahorro de costos para impulsar el crecimiento y la eficiencia de tu organización.</p>
+  <h1>Asesoría Financiera&nbsp;Integral</h1>
+  <p>Soluciones profesionales en planeación, valoración y ahorro de costos para impulsar el valor y la eficiencia de tu organización.</p>
   <a class="btn" href="mailto:asesor@hazelro.com?subject=Consulta%20HazelRo">Solicitar diagnóstico gratuito</a>
 
   <!-- Radial map -->
