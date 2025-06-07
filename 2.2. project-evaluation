@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Evaluación de Proyectos • HazelRo</title><link rel="stylesheet" href="/styles.css"></head>
+<body>
+<header class="navbar">…mismo header…</header>
+
+<main class="container">
+  <section class="hero">
+    <h1>Evaluación Financiera de Proyectos</h1>
+    <p>Modelos de VAN, TIR y análisis de límites económicos (economic limit) para decidir dónde invertir y cuándo detener pozos no rentables.:contentReference[oaicite:3]{index=3}</p>
+  </section>
+
+  <h2>Metodología</h2>
+  <ol>
+    <li>Recolección de supuestos operativos y de mercado.</li>
+    <li>Construcción de flujo de caja descontado en Excel/Python.</li>
+    <li>Análisis de sensibilidad y escenarios Monte-Carlo.</li>
+  </ol>
+
+  <h2>Casos destacados</h2>
+  <p><strong>Economic Limit Modeling 2015:</strong> Identificamos pozos no rentables durante la crisis petrolera, permitiendo su cierre oportuno y protegiendo caja.:contentReference[oaicite:4]{index=4}</p>
+</main>
+
+<footer class="footer">© 2025 HazelRo</footer>
+</body>
+</html>
