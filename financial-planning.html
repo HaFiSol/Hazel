@@ -6,29 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    :root{ --accent:#FFD700; --bg:#000; --font:#e6e6e6; }
-    *{ box-sizing:border-box; margin:0; padding:0; font-family:"Inter",sans-serif; }
-    body{ background:var(--bg); color:var(--font); line-height:1.6; padding:1rem 2rem; max-width:1100px; margin:auto; }
-    a{ color:var(--accent); text-decoration:none; }
-
-    header{ display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:2.5rem; }
-    h1{ color:var(--accent); font-size:2rem; margin-bottom:.75rem; }
-    h2{ margin:2.5rem 0 1rem; color:var(--accent); font-size:1.3rem; }
-
-    .flow{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:1.5rem; margin-top:2.5rem; }
-    .step{
-      flex:1 1 260px; background:#111; border:2px solid var(--accent); border-radius:.75rem;
-      padding:1.4rem; text-align:left; position:relative;
-    }
-    .step h3{ color:var(--accent); font-size:1.15rem; margin-bottom:.5rem; }
-    .step p{ font-size:.9rem; }
-    .step:after{ content:''; position:absolute; right:-1.5rem; top:50%;
-                 width:1.5rem; height:.25rem; background:var(--accent); }
-    .step:last-child:after{ display:none; }
-
-    footer{ margin-top:3rem; font-size:.9rem; color:#888; text-align:center; }
-
-    @media(max-width:640px){ .step:after{ display:none; } }
+    :root{--accent:#FFE600;--bg:#000;--font:#E6E6E6}
+    *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
+    body{background:var(--bg);color:var(--font);line-height:1.6;padding:1rem 2rem;max-width:1100px;margin:auto}
+    a{color:var(--accent)}
+    header{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2.4rem}
+    h1{color:var(--accent);font-size:2rem;margin-bottom:.8rem}
+    h2{color:var(--accent);font-size:1.3rem;margin:2rem 0 1rem}
+    .flow{display:flex;flex-wrap:wrap;gap:1.4rem;margin-top:1.8rem}
+    .step{flex:1 1 240px;background:#111;border:2px solid var(--accent);border-radius:.75rem;padding:1.2rem}
+    .step h3{color:var(--accent);margin-bottom:.5rem;font-size:1.05rem}
+    .step p{font-size:.9rem}
+    footer{margin-top:3rem;text-align:center;font-size:.85rem;color:#888}
+    @media(max-width:640px){.step{flex:1 1 100%}}
   </style>
 </head>
 <body>
@@ -36,47 +26,37 @@
 <header>
   <a href="/">Inicio</a> |
   <span>Planeación</span> |
-  <a href="/project-evaluation.html">Evaluación de Proyectos</a> |
-  <a href="/cost-optimization.html">Optimización de Costos</a>
+  <a href="/project-evaluation.html">Evaluación</a> |
+  <a href="/cost-optimization.html">Optimización</a> |
+  <a href="/outsourcing.html">Outsourcing</a> |
+  <a href="/tax-advice.html">Tributaria&nbsp;PN</a>
 </header>
 
 <h1>Planeación Financiera Estratégica</h1>
 
-<p>
-  Estructuramos procesos de planeación bottom-up y driver-based para conectar
-  tus indicadores operativos con resultados financieros previsibles.
-</p>
+<p>Diseñamos un proceso de planeación bottom-up y driver-based que conecta tus métricas operativas con resultados financieros previsibles.</p>
 
-<h2>Nuestro Proceso</h2>
+<h2>Flujo de trabajo</h2>
 
 <div class="flow">
-  <div class="step">
-    <h3>1 • Diagnóstico &amp; estrategia</h3>
-    <p>Clarificamos metas de crecimiento, margen, caja y riesgo; definimos
-       supuestos macro &amp; sectoriales.</p>
-  </div>
-
-  <div class="step">
-    <h3>2 • Forecast &amp; escenarios</h3>
-    <p>Modelos rolling-forecast de 12-18 meses y proyecciones a 5 años;
-       sensibilidad y escenarios Monte Carlo.</p>
-  </div>
-
-  <div class="step">
-    <h3>3 • Plan operativo</h3>
-    <p>Traducción del presupuesto en KPIs, OKRs y accountability por centro
-       de costo y responsable.</p>
-  </div>
-
-  <div class="step">
-    <h3>4 • Seguimiento ágil</h3>
-    <p>Tableros Power BI / Looker, alertas automáticas y rituales de
-       performance review.</p>
-  </div>
+  <div class="step"><h3>1 • Estrategia</h3><p>Alineamos metas y supuestos macro &amp; sectoriales.</p></div>
+  <div class="step"><h3>2 • Forecast</h3><p>Escenarios <em>driver-based</em> y rolling-forecast.</p></div>
+  <div class="step"><h3>3 • Recursos</h3><p>CapEx, OPEX y necesidades de capital humano.</p></div>
+  <div class="step"><h3>4 • EEFF Integrados</h3><p>Estado de Resultados, Balance y Cash-flow coherentes.</p></div>
+  <div class="step"><h3>5 • Seguimiento</h3><p>Reforecast trimestral y variaciones explicadas.</p></div>
 </div>
 
+<h2>Entregables</h2>
+<ul>
+  <li>Presupuesto anual + escenarios.</li>
+  <li>Dashboard de liquidez y rentabilidad.</li>
+  <li>Guía de decisiones ágiles.</li>
+</ul>
+
 <footer>
-  © 2025 HazelRo – Planeación Financiera
+  Tel: <a href="tel:+573212063866">+57&nbsp;321&nbsp;206&nbsp;3866</a> &nbsp;|&nbsp;
+  Email: <a href="mailto:asesor@hazelro.com">asesor@hazelro.com</a><br>
+  © 2025 HazelRo • Bogotá-Colombia
 </footer>
 </body>
 </html>
