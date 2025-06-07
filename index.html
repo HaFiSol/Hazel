@@ -1,123 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>HazelRo | Financial Services</title>
+  <title>HazelRo | Servicios Financieros</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet" />
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: "Inter", sans-serif;
-    }
+    *{box-sizing:border-box;margin:0;padding:0;font-family:"Inter",sans-serif}
+    body{background:#101112;color:#e6e6e6;line-height:1.6}
+    a{color:#08c;text-decoration:none}
+    header{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:#0b0c0d;border-bottom:1px solid #1f1f1f}
+    .logo{font-size:1.5rem;font-weight:700;letter-spacing:.05rem}
+    nav a{margin-left:1.25rem;font-weight:500}
+    .hero{text-align:center;padding:4rem 1rem 3rem}
+    .hero h1{font-size:2.4rem;margin-bottom:1rem}
+    .hero p{max-width:60ch;margin:0 auto 1.5rem}
+    .btn{display:inline-block;margin-top:1rem;padding:.75rem 1.5rem;background:#08c;color:#fff;border-radius:.5rem;font-weight:600}
 
-    body {
-      line-height: 1.6;
-      color: #1e293b;
-    }
+    /* Radial service map */
+    .radial{position:relative;width:min(90vw,600px);height:min(90vw,600px);margin:0 auto 4rem}
+    .central{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#08c;color:#fff;width:180px;height:180px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1rem;font-weight:700;letter-spacing:.02rem}
+    .node{position:absolute;width:140px;height:140px;border-radius:50%;background:#161718;border:2px solid #08c;display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;cursor:pointer;transition:transform .25s ease}
+    .node:hover{transform:scale(1.06)}
+    /* Node positions */
+    .n-plan{top:0;left:50%;transform:translate(-50%,0)}
+    .n-eval{left:0;top:50%;transform:translate(0,-50%)}
+    .n-cost{right:0;top:50%;transform:translate(0,-50%)}
 
-    header {
-      background: #023047;
-      color: #fff;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    /* Contact */
+    .contact{background:#0b0c0d;padding:2rem 1rem;text-align:center;border-top:1px solid #1f1f1f}
+    .contact h2{margin-bottom:1rem;font-size:1.75rem}
+    footer{text-align:center;padding:1rem;font-size:.875rem;background:#0b0c0d;border-top:1px solid #1f1f1f}
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1rem;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 2rem 1rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-      padding: 1.5rem;
-      transition: transform 0.2s;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-    }
-
-    .card h3 {
-      margin-bottom: 0.75rem;
-      color: #023047;
-    }
-
-    footer {
-      background: #0b132b;
-      color: #fff;
-      text-align: center;
-      padding: 1rem;
-    }
+    /* Responsive tweaks */
+    @media(max-width:480px){.hero h1{font-size:2rem}.central{width:150px;height:150px}.node{width:110px;height:110px;font-size:.85rem}}
   </style>
 </head>
 <body>
   <header>
-    <h1>HazelRo</h1>
+    <a href="/" class="logo">HazelRo</a>
     <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="financial-planning.html">Financial Planning</a></li>
-        <li><a href="project-evaluation.html">Project Evaluation</a></li>
-        <li><a href="cost-optimization.html">Cost Optimization</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <a href="#mapa">Servicios</a>
+      <a href="#contacto">Contacto</a>
     </nav>
   </header>
 
-  <section class="container">
-    <h2 style="text-align:center;margin-bottom:2rem;">Our Services</h2>
-    <div class="grid">
-      <a class="card" href="financial-planning.html">
-        <h3>Financial Planning &amp; Analysis</h3>
-        <p>Build robust cash‑flow forecasts, budgets, and sensitivity analyses powered by Python models.</p>
-      </a>
-      <a class="card" href="project-evaluation.html">
-        <h3>Project Evaluation</h3>
-        <p>Oil &amp; Gas specialists evaluating capital investments with discounted‑cash‑flow and risk scenario tools.</p>
-      </a>
-      <a class="card" href="cost-optimization.html">
-        <h3>Cost Optimization</h3>
-        <p>Lean cost reviews and SAP‑driven process improvements that unlock double‑digit savings.</p>
-      </a>
-    </div>
-  </section>
+  <main>
+    <section class="hero">
+      <h1>Soluciones financieras para decisiones estratégicas</h1>
+      <p>Especialistas en planeación financiera, evaluación de proyectos y optimización de costos para Oil & Gas y sectores intensivos en capital.</p>
+      <a class="btn" href="#mapa">Explorar servicios</a>
+    </section>
 
-  <section id="contact" class="container" style="margin-top:3rem;">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:asesor@hazelro.com">asesor@hazelro.com</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/javier-rozo-2b344771" target="_blank">Javier Rozo</a></p>
-  </section>
+    <section id="mapa" class="radial">
+      <div class="central">Asesoría<br>Financiera</div>
+      <article class="node n-plan" onclick="location.href='financial-planning.html'">
+        <span>Planeación<br>Financiera</span>
+      </article>
+      <article class="node n-eval" onclick="location.href='project-evaluation.html'">
+        <span>Evaluación<br>de Proyectos</span>
+      </article>
+      <article class="node n-cost" onclick="location.href='cost-optimization.html'">
+        <span>Optimización<br>de Costos</span>
+      </article>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 HazelRo. All rights reserved.</p>
-  </footer>
+    <section id="contacto" class="contact">
+      <h2>Contacto</h2>
+      <p>Teléfono: <a href="tel:+573212063866">+57&nbsp;321&nbsp;206&nbsp;3866</a><br>
+         Email: <a href="mailto:rozo.xavi@gmail.com">rozo.xavi@gmail.com</a></p>
+    </section>
+  </main>
+
+  <footer>© 2025 HazelRo • Bogotá‑Colombia</footer>
 </body>
 </html>
