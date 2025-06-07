@@ -20,9 +20,7 @@
     nav a{margin-inline:.7rem;font-weight:500}
 
     /* ─── Hero layout ──────────────────────── */
-    .hero{max-width:1000px;margin:0 auto;padding:4rem 1rem 6rem;display:flex;gap:0;align-items:center;flex-wrap:wrap}
-
-    /* Texto plano a la izquierda */
+    .hero{max-width:1000px;margin:0 auto;padding:4rem 1rem 6rem;display:flex;flex-wrap:wrap;align-items:center;gap:0}
     .desc{flex:1 1 260px;max-width:380px;margin-right:-5rem}
     .desc h1{font-size:2.3rem;color:var(--accent);margin-bottom:1rem}
     .desc p{margin-bottom:1.5rem}
@@ -42,17 +40,17 @@
           transition:transform .25s,background .25s,color .25s}
     .node:hover{background:var(--accent);color:#000;transform:scale(1.06)}
 
-    /* Posiciones reloj 12-2-4-5-6 (sin solaparse) */
-    .s1{top:5%;  left:74%}
-    .s2{top:27%; left:87%}
-    .s3{top:49%; left:90%}
-    .s4{top:71%; left:87%}
-    .s5{top:92%; left:74%}
+    /* Posiciones (reloj) */
+    .s1{top:4%;  left:74%}   /* 12 en punto */
+    .s2{top:26%; left:87%}   /* 2 en punto */
+    .s3{top:48%; left:90%}   /* 4 en punto */
+    .s4{top:70%; left:87%}   /* 5 en punto */
+    .s5{top:90%; left:74%}   /* 6 en punto */
 
     /* ─── Responsive ───────────────────────── */
     @media(max-width:640px){
       .node{width:85px;height:85px;padding:.45rem;font-size:.7rem}
-      .half{height:380px;width:100%}
+      .half{width:100%;height:380px}
       .desc{margin-right:0;margin-bottom:2.5rem}
     }
 
@@ -77,11 +75,28 @@
 </header>
 
 <section class="hero">
-  <!-- Texto -->
+  <!-- Bloque descriptivo vendedor -->
   <div class="desc">
-    <h1>Servicios Financieros</h1>
-    <p>Soluciones profesionales para planear, evaluar y optimizar las finanzas de tu negocio, garantizando decisiones informadas y eficiencia sostenible.</p>
-    <a class="btn" href="mailto:asesor@hazelro.com?subject=Consulta%20HazelRo">Solicitar diagnóstico gratuito</a>
+    <h1>Transforma tus Finanzas<br>en Ventaja Competitiva</h1>
+
+    <p>
+      En HazelRo convertimos números en estrategia y procesos en resultados.
+      Nuestro equipo diseña, implementa y controla la arquitectura financiera que
+      impulsa <strong>crecimiento rentable</strong>, libera caja y mitiga riesgos
+      en cada etapa del negocio.
+    </p>
+
+    <ul style="list-style:disc;padding-left:1.2rem;margin:1.4rem 0 2rem;font-size:.9rem;line-height:1.5">
+      <li><strong>Planeación Financiera</strong> basada en <em>drivers</em> que conecta la visión con el presupuesto.</li>
+      <li><strong>Evaluación de Proyectos</strong> (VAN, TIR y análisis de riesgos) para decidir dónde invertir y cuándo escalar.</li>
+      <li><strong>Optimización de Costos</strong> que libera hasta 10&nbsp;% de OPEX y materializa ahorros sostenibles.</li>
+      <li><strong>Outsourcing Contable</strong> &nbsp;|&nbsp; cifras claras, cierre rápido y reportes NIIF listos para auditoría.</li>
+      <li><strong>Asesoría Tributaria PN</strong> para maximizar beneficios y blindarte ante cambios normativos.</li>
+    </ul>
+
+    <a class="btn" href="mailto:asesor@hazelro.com?subject=Agenda%20tu%20diagnóstico">
+      Agenda tu diagnóstico gratuito
+    </a>
   </div>
 
   <!-- Medio círculo y nodos -->
