@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Optimización de Costos • HazelRo</title><link rel="stylesheet" href="/styles.css"></head>
+<body>
+<header class="navbar">…mismo header…</header>
+
+<main class="container">
+  <section class="hero">
+    <h1>Optimización de Costos Operativos</h1>
+    <p>Reduce OPEX hasta 10 % identificando actividades no productivas y rediseñando procesos.:contentReference[oaicite:5]{index=5}</p>
+  </section>
+
+  <h2>Servicios incluidos</h2>
+  <ul>
+    <li>Mapeo de procesos y análisis de valor.</li>
+    <li>Benchmarking interno vs. mejores prácticas del sector.</li>
+    <li>Implementación de KPIs y dashboards en SAP/Power BI.</li>
+  </ul>
+
+  <h2>Logro clave</h2>
+  <p>Ahorro anual de ~USD 30 millones (-10 % OPEX) en Mansarovar Energy gracias a la eliminación de actividades no productivas y nuevos centros de costo.:contentReference[oaicite:6]{index=6}</p>
+</main>
+
+<footer class="footer">© 2025 HazelRo</footer>
+</body>
+</html>
