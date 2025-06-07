@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <title>HazelRo | Servicios Financieros</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!--  ⬇️ Si subes el PNG/SVG como /assets/hazelro-logo.png, descomenta la siguiente línea para favicon  -->
-  <!-- <link rel="icon" type="image/png" href="/assets/hazelro-logo.png" /> -->
+  <!--  Favicon opcional -->
+  <!-- <link rel="icon" type="image/png" href="/hazelro-logo.png" /> -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet" />
   <style>
     :root{--accent:#FFD700;--bg:#000;--font:#e6e6e6}
@@ -13,84 +13,68 @@
     body{background:var(--bg);color:var(--font);line-height:1.6}
     a{color:var(--accent);text-decoration:none}
 
-    /* ─── Header ─────────────────────────────────────────────── */
+    /* ─── Header ─────────────────────────────────────── */
     header{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:var(--bg);border-bottom:1px solid #222}
     .logo-wrap{display:flex;align-items:center;gap:.75rem}
     .logo-img{width:42px;height:42px;object-fit:contain}
     .logo-text{font-size:1.5rem;font-weight:700;letter-spacing:.05rem;color:var(--accent)}
-    nav a{margin-left:1.25rem;font-weight:500}
+    nav a{margin-inline:.75rem;font-weight:500}
 
-    /* ─── Hero ──────────────────────────────────────────────── */
-    .hero{text-align:center;padding:4rem 1rem 3rem}
-    .hero h1{font-size:2.4rem;margin:2rem 0 1rem;color:var(--accent)}
-    .hero p{max-width:60ch;margin:0 auto 1.5rem}
+    /* ─── Hero / Radial service map ─────────────────── */
+    .hero{max-width:960px;margin:0 auto;padding:4rem 1rem;text-align:center;position:relative}
+    .hero h1{font-size:2.4rem;color:var(--accent);margin-bottom:1.5rem}
+    .hero p{max-width:680px;margin:0 auto 1.5rem}
     .btn{display:inline-block;margin-top:1rem;padding:.75rem 1.5rem;background:var(--accent);color:#000;border-radius:.5rem;font-weight:600}
 
-    /* ─── Radial service map ─────────────────────────────────── */
-    .radial{position:relative;width:min(90vw,600px);height:min(90vw,600px);margin:0 auto 4rem}
-    .central{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--accent);color:#000;width:180px;height:180px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1rem;font-weight:700;letter-spacing:.02rem;box-shadow:0 0 15px rgba(255,215,0,.4)}
-    /* opcional: logo watermark dentro del círculo central */
-    .central::after{content:"";position:absolute;inset:0;border-radius:50%;background:url('/assets/hazelro-logo.png') center/80% no-repeat;opacity:.12;pointer-events:none}
-
+    .radial{position:relative;width:min(90vw,680px);height:min(90vw,680px);margin:4rem auto}
+    /* marca de agua */
+    .central{position:absolute;inset:0;border-radius:50%;background:url('/hazelro-logo.png') center/80% no-repeat;opacity:.12;pointer-events:none}
+    /* nodos */
     .node{position:absolute;width:140px;height:140px;border-radius:50%;background:#111;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;cursor:pointer;transition:transform .25s ease,color .25s ease,background .25s ease}
-    .node:hover{transform:scale(1.06);background:#222;color:var(--accent)}
-    .n-plan{top:0;left:50%;transform:translate(-50%,0)}
-    .n-eval{left:0;top:50%;transform:translate(0,-50%)}
-    .n-cost{right:0;top:50%;transform:translate(0,-50%)}
+    .node:hover{background:var(--accent);color:#000;transform:scale(1.05)}
+    .node span{font-size:.9rem;font-weight:600}
+    /* posiciones (triángulo equilátero aproximado) */
+    .node.plan{top:50%;left:0;transform:translate(-50%,-50%)}
+    .node.eval{top:0;left:50%;transform:translate(-50%,-50%)}
+    .node.cost{top:50%;left:100%;transform:translate(-50%,-50%)}
+    @media(max-width:640px){.node{width:110px;height:110px;padding:.75rem;font-size:.8rem}}
 
-    /* ─── Contact ────────────────────────────────────────────── */
-    .contact{background:#0b0c0d;padding:2rem 1rem;text-align:center;border-top:1px solid #222}
-    .contact h2{margin-bottom:1rem;font-size:1.75rem;color:var(--accent)}
-    footer{text-align:center;padding:1rem;font-size:.875rem;background:#0b0c0d;border-top:1px solid #222;color:#aaa}
-
-    /* ─── Responsive ─────────────────────────────────────────── */
-    @media(max-width:480px){
-      .hero h1{font-size:2rem}
-      .central{width:150px;height:150px}
-      .node{width:110px;height:110px;font-size:.85rem}
-    }
+    /* ─── Footer ─────────────────────────────────────── */
+    footer{margin-top:4rem;padding:2rem 1rem;text-align:center;font-size:.85rem;color:#888}
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo-wrap" onclick="location.href='/'" style="cursor:pointer">
-      <!--  ↳ Cambia la ruta del src a la ubicación real en GitHub (/assets/…)  -->
-      <img class="logo-img" src="/assets/hazelro-logo.png" alt="HazelRo Logo" />
-      <span class="logo-text">HazelRo</span>
-    </div>
-    <nav>
-      <a href="#mapa">Servicios</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <h1>Soluciones financieras para decisiones estratégicas</h1>
-      <p>Especialistas en planeación financiera, evaluación de proyectos y optimización de costos para Oil & Gas y sectores intensivos en capital.</p>
-      <a class="btn" href="#mapa">Explorar servicios</a>
-    </section>
+<header>
+  <a href="/" class="logo-wrap">
+    <img class="logo-img" src="/hazelro-logo.png" alt="HazelRo" />
+    <span class="logo-text">HazelRo</span>
+  </a>
+  <nav>
+    <a href="/">Inicio</a>
+    |
+    <a href="/financial-planning.html">Planeación</a>
+    |
+    <a href="/project-evaluation.html">Evaluación de Proyectos</a>
+    |
+    <a href="/cost-optimization.html">Optimización de Costos</a>
+  </nav>
+</header>
 
-    <section id="mapa" class="radial">
-      <div class="central">Asesoría<br>Financiera</div>
-      <article class="node n-plan" onclick="location.href='financial-planning.html'">
-        <span>Planeación<br>Financiera</span>
-      </article>
-      <article class="node n-eval" onclick="location.href='project-evaluation.html'">
-        <span>Evaluación<br>de Proyectos</span>
-      </article>
-      <article class="node n-cost" onclick="location.href='cost-optimization.html'">
-        <span>Optimización<br>de Costos</span>
-      </article>
-    </section>
+<section class="hero">
+  <h1>Asesoría Financiera<br/>Integral</h1>
+  <p>Servicios profesionales en planeación financiera, evaluación de proyectos y optimización de costos diseñados para maximizar el valor y la eficiencia de tu empresa.</p>
+  <a class="btn" href="mailto:asesor@hazelro.com?subject=Consulta%20HazelRo">Solicitar diagnóstico gratuito</a>
 
-    <section id="contacto" class="contact">
-      <h2>Contacto</h2>
-      <p>Teléfono: <a href="tel:+573212063866">+57&nbsp;321&nbsp;206&nbsp;3866</a><br>
-         Email: <a href="mailto:asesor@hazelro.com">asesor@hazelro.com</a></p>
-    </section>
-  </main>
+  <!-- Radial map -->
+  <div class="radial">
+    <div class="central"></div>
+    <a class="node plan" href="/financial-planning.html"><span>Planeación<br/>Financiera</span></a>
+    <a class="node eval" href="/project-evaluation.html"><span>Evaluación de<br/>Proyectos</span></a>
+    <a class="node cost" href="/cost-optimization.html"><span>Optimización<br/>de Costos</span></a>
+  </div>
+</section>
 
-  <footer>© 2025 HazelRo • Bogotá‑Colombia</footer>
+<footer>© 2025 HazelRo • Bogotá‑Colombia</footer>
 </body>
 </html>
