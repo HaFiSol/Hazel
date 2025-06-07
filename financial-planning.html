@@ -8,15 +8,16 @@
   <style>
     :root{--accent:#FFD700;--bg:#000;--font:#e6e6e6}
     *{box-sizing:border-box;margin:0;padding:0;font-family:"Inter",sans-serif}
-    body{background:var(--bg);color:var(--font);line-height:1.6;padding:1rem 2rem;max-width:1000px;margin:auto}
+    body{background:var(--bg);color:var(--font);line-height:1.6;padding:1rem 2rem;max-width:1100px;margin:auto}
     a{color:var(--accent);text-decoration:none}
     header{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
     h1{color:var(--accent);font-size:2rem;margin-bottom:.75rem}
     h2{margin:2.5rem 0 1rem;color:var(--accent);font-size:1.3rem}
     footer{margin-top:3rem;font-size:.9rem;color:#888;text-align:center}
+
     /* ---- Proceso ---- */
     .flow{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem;margin-top:2.5rem}
-    .step{flex:1 1 220px;min-width:220px;background:#111;border:2px solid var(--accent);border-radius:.75rem;padding:1.2rem;text-align:center;position:relative}
+    .step{flex:1 1 260px;background:#111;border:2px solid var(--accent);border-radius:.75rem;padding:1.4rem;text-align:left;position:relative}
     .step h3{color:var(--accent);font-size:1.15rem;margin-bottom:.5rem}
     .step p{font-size:.9rem}
     .step:after{content:'';position:absolute;right:-1.5rem;top:50%;width:1.5rem;height:.25rem;background:var(--accent)}
@@ -36,18 +37,42 @@
 <h1>Planeación Financiera Estratégica</h1>
 
 <div class="flow">
-  <div class="step"><h3>1&nbsp;•&nbsp;Estrategia</h3><p>Definir metas y supuestos clave.</p></div>
-  <div class="step"><h3>2&nbsp;•&nbsp;Forecast</h3><p>Escenarios driver-based y rolling.</p></div>
-  <div class="step"><h3>3&nbsp;•&nbsp;Recursos</h3><p>CapEx, OPEX, talento y cuellos de botella.</p></div>
-  <div class="step"><h3>4&nbsp;•&nbsp;EEFF&nbsp;Integrados</h3><p>Estado de resultados, balance y cash-flow.</p></div>
-  <div class="step"><h3>5&nbsp;•&nbsp;Seguimiento</h3><p>Reforecast trimestral y planes de acción.</p></div>
+  <div class="step">
+    <h3>1&nbsp;• Estrategia</h3>
+    <p>Alineamos la planeación con metas de crecimiento, margen y retorno, definiendo
+       supuestos macro y de la industria.</p>
+  </div>
+
+  <div class="step">
+    <h3>2&nbsp;• Forecast</h3>
+    <p>Proyectamos ventas con enfoque driver-based, construimos escenarios
+       (base–upside–downside) y elegimos horizontes rolling.</p>
+  </div>
+
+  <div class="step">
+    <h3>3&nbsp;• Recursos</h3>
+    <p>Detallamos CapEx, plantilla y materiales críticos, validando capacidad productiva
+       y cuellos de botella.</p>
+  </div>
+
+  <div class="step">
+    <h3>4&nbsp;• EEFF&nbsp;Integrados</h3>
+    <p>Construimos Estado de Resultados, Balance y Flujo de Caja asegurando coherencia
+       con KPIs estratégicos.</p>
+  </div>
+
+  <div class="step">
+    <h3>5&nbsp;• Seguimiento</h3>
+    <p>Realizamos reforecast trimestral, explicamos variaciones y sugerimos acciones
+       correctivas.</p>
+  </div>
 </div>
 
 <h2>Entregables</h2>
 <ul>
-  <li>Presupuesto anual y rolling-forecast.</li>
-  <li>Escenarios base, upside, downside.</li>
-  <li>Dashboards de KPIs.</li>
+  <li>Presupuesto anual + rolling-forecast.</li>
+  <li>Escenarios de sensibilidad.</li>
+  <li>Dashboards de liquidez y rentabilidad.</li>
 </ul>
 
 <footer>© 2025 HazelRo • Bogotá-Colombia</footer>
