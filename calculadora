@@ -1,0 +1,530 @@
+import React, { useState, useEffect } from 'react';
+import { Calculator, DollarSign, TrendingUp, FileText, BarChart3 } from 'lucide-react';
+
+const FinancialCalculator = () => {
+  const [activeTab, setActiveTab] = useState('tvm');
+  const [tvmData, setTvmData] = useState({
+    n: '',
+    i: '',
+    pv: '',
+    pmt: '',
+    fv: '',
+    pmtMode: 'end' // 'end' or 'begin'
+  });
+  
+  const [loanData, setLoanData] = useState({
+    principal: '',
+    rate: '',
+    years: '',
+    payment: '',
+    schedule: []
+  });
+
+  const [bondData, setBondData] = useState({
+    faceValue: '',
+    couponRate: '',
+    years: '',
+    marketRate: '',
+    price: ''
+  });
+
+  const [results, setResults] = useState({});
+
+  // TVM Calculations
+  const calculateTVM = (field) => {
+    const n = parseFloat(parseNumber(tvmData.n)) || 0;
+    const i = parseFloat(parseNumber(tvmData.i)) / 100 / 12 || 0; // monthly rate
+    const pv = parseFloat(parseNumber(tvmData.pv)) || 0;
+    const pmt = parseFloat(parseNumber(tvmData.pmt)) || 0;
+    const fv = parseFloat(parseNumber(tvmData.fv)) || 0;
+    const isBegin = tvmData.pmtMode === 'begin';
+
+    let result = 0;
+
+    try {
+      switch (field) {
+        case 'n':
+          if (i === 0) {
+            result = -(pv + fv) / pmt;
+          } else {
+            const factor = isBegin ? (1 + i) : 1;
+            result = Math.log((fv - pmt * factor / i) / (pv + pmt * factor / i)) / Math.log(1 + i);
+          }
+          break;
+        
+        case 'i':
+          // Iterative solution for interest rate
+          let rate = 0.01;
+          for (let iter = 0; iter < 100; iter++) {
+            const factor = isBegin ? (1 + rate) : 1;
+            const pvCalc = fv / Math.pow(1 + rate, n) + pmt * factor * (1 - Math.pow(1 + rate, -n)) / rate;
+            const diff = pvCalc + pv;
+            if (Math.abs(diff) < 0.001) break;
+            rate += diff > 0 ? -0.0001 : 0.0001;
+          }
+          result = rate * 12 * 100; // annual percentage
+          break;
+        
+        case 'pv':
+          const factor1 = isBegin ? (1 + i) : 1;
+          if (i === 0) {
+            result = -(fv + pmt * n);
+          } else {
+            result = -(fv / Math.pow(1 + i, n) + pmt * factor1 * (1 - Math.pow(1 + i, -n)) / i);
+          }
+          break;
+        
+        case 'pmt':
+          const factor2 = isBegin ? (1 + i) : 1;
+          if (i === 0) {
+            result = -(pv + fv) / n;
+          } else {
+            result = -(pv + fv / Math.pow(1 + i, n)) * i / (factor2 * (1 - Math.pow(1 + i, -n)));
+          }
+          break;
+        
+        case 'fv':
+          const factor3 = isBegin ? (1 + i) : 1;
+          if (i === 0) {
+            result = -(pv + pmt * n);
+          } else {
+            result = -(pv * Math.pow(1 + i, n) + pmt * factor3 * (Math.pow(1 + i, n) - 1) / i);
+          }
+          break;
+      }
+      
+      setResults(prev => ({
+        ...prev,
+        [field]: isNaN(result) ? 'Error' : formatNumber(result)
+      }));
+    } catch (error) {
+      setResults(prev => ({
+        ...prev,
+        [field]: 'Error'
+      }));
+    }
+  };
+
+  // Loan Amortization
+  const calculateLoan = () => {
+    const principal = parseFloat(parseNumber(loanData.principal));
+    const annualRate = parseFloat(parseNumber(loanData.rate)) / 100;
+    const years = parseFloat(parseNumber(loanData.years));
+    
+    if (!principal || !annualRate || !years) return;
+    
+    const monthlyRate = annualRate / 12;
+    const numberOfPayments = years * 12;
+    
+    // Calculate monthly payment
+    const monthlyPayment = principal * (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) / 
+                          (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
+    
+    // Generate amortization schedule
+    let balance = principal;
+    const schedule = [];
+    
+    for (let i = 1; i <= numberOfPayments; i++) {
+      const interestPayment = balance * monthlyRate;
+      const principalPayment = monthlyPayment - interestPayment;
+      balance -= principalPayment;
+      
+      schedule.push({
+        payment: i,
+        monthlyPayment: monthlyPayment,
+        principal: principalPayment,
+        interest: interestPayment,
+        balance: Math.max(0, balance)
+      });
+    }
+    
+    setLoanData(prev => ({
+      ...prev,
+      payment: formatNumber(monthlyPayment),
+      schedule: schedule.slice(0, 12) // Show first 12 payments
+    }));
+  };
+
+  // Bond Pricing
+  const calculateBond = (field) => {
+    const faceValue = parseFloat(parseNumber(bondData.faceValue)) || 1000;
+    const couponRate = parseFloat(parseNumber(bondData.couponRate)) / 100 || 0;
+    const years = parseFloat(parseNumber(bondData.years)) || 0;
+    const marketRate = parseFloat(parseNumber(bondData.marketRate)) / 100 || 0;
+    
+    const couponPayment = faceValue * couponRate;
+    const periods = years;
+    
+    let result = 0;
+    
+    if (field === 'price') {
+      // Calculate bond price
+      let price = 0;
+      for (let t = 1; t <= periods; t++) {
+        price += couponPayment / Math.pow(1 + marketRate, t);
+      }
+      price += faceValue / Math.pow(1 + marketRate, periods);
+      result = price;
+    }
+    
+    setBondData(prev => ({
+      ...prev,
+      price: formatNumber(result)
+    }));
+  };
+
+  const TabButton = ({ id, icon: Icon, label, active, onClick }) => (
+    <button
+      onClick={() => onClick(id)}
+      className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all ${
+        active 
+          ? 'bg-blue-600 text-white shadow-lg' 
+          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+      }`}
+    >
+      <Icon size={18} />
+      <span className="font-medium">{label}</span>
+    </button>
+  );
+
+  const formatNumber = (num) => {
+    if (num === '' || isNaN(num)) return num;
+    const isNegative = num < 0;
+    const absNum = Math.abs(num);
+    const formatted = absNum.toLocaleString('es-ES', {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2
+    });
+    return isNegative ? `-${formatted}` : formatted;
+  };
+
+  const parseNumber = (str) => {
+    if (typeof str === 'string') {
+      // Handle negative numbers
+      const isNegative = str.startsWith('-');
+      const cleanStr = str.replace(/^-/, '').replace(/\./g, '').replace(',', '.');
+      const parsed = parseFloat(cleanStr);
+      return isNegative ? -parsed : parsed;
+    }
+    return str;
+  };
+
+  const InputField = ({ label, value, onChange, suffix = '', type = 'text' }) => (
+    <div className="space-y-1">
+      <label className="block text-sm font-medium text-gray-700">{label}</label>
+      <div className="relative">
+        <input
+          type={type}
+          value={value}
+          onChange={(e) => {
+            const rawValue = e.target.value;
+            // Allow numbers, commas, dots, and negative sign
+            if (/^-?[0-9.,]*$/.test(rawValue) || rawValue === '' || rawValue === '-') {
+              onChange(rawValue);
+            }
+          }}
+          onBlur={(e) => {
+            // Format on blur if it's a valid number
+            const numValue = parseFloat(parseNumber(e.target.value));
+            if (!isNaN(numValue) && e.target.value !== '' && e.target.value !== '-') {
+              onChange(formatNumber(numValue));
+            }
+          }}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        />
+        {suffix && (
+          <span className="absolute right-3 top-2 text-gray-500 text-sm">{suffix}</span>
+        )}
+      </div>
+    </div>
+  );
+
+  const CalculateButton = ({ onClick, children }) => (
+    <button
+      onClick={onClick}
+      className="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors font-medium"
+    >
+      {children}
+    </button>
+  );
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 p-4">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <div className="flex items-center justify-center space-x-3 mb-4">
+            <Calculator className="text-blue-400" size={32} />
+            <h1 className="text-3xl font-bold text-white">Calculadora Financiera HP 19BII</h1>
+          </div>
+          <p className="text-gray-300">Soluciones financieras profesionales</p>
+        </div>
+
+        {/* Navigation Tabs */}
+        <div className="flex flex-wrap justify-center gap-2 mb-8">
+          <TabButton 
+            id="tvm" 
+            icon={DollarSign} 
+            label="TVM" 
+            active={activeTab === 'tvm'} 
+            onClick={setActiveTab} 
+          />
+          <TabButton 
+            id="loan" 
+            icon={TrendingUp} 
+            label="Préstamos" 
+            active={activeTab === 'loan'} 
+            onClick={setActiveTab} 
+          />
+          <TabButton 
+            id="bond" 
+            icon={FileText} 
+            label="Bonos" 
+            active={activeTab === 'bond'} 
+            onClick={setActiveTab} 
+          />
+        </div>
+
+        {/* Content */}
+        <div className="bg-white rounded-2xl shadow-2xl p-6">
+          {/* TVM Tab */}
+          {activeTab === 'tvm' && (
+            <div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">Valor del Dinero en el Tiempo (TVM)</h2>
+              
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-4">
+                  <InputField
+                    label="N (Número de períodos)"
+                    value={tvmData.n}
+                    onChange={(val) => setTvmData(prev => ({ ...prev, n: val }))}
+                  />
+                  
+                  <InputField
+                    label="I/YR (Tasa de interés anual)"
+                    value={tvmData.i}
+                    onChange={(val) => setTvmData(prev => ({ ...prev, i: val }))}
+                    suffix="%"
+                  />
+                  
+                  <InputField
+                    label="PV (Valor presente)"
+                    value={tvmData.pv}
+                    onChange={(val) => setTvmData(prev => ({ ...prev, pv: val }))}
+                    suffix="$"
+                  />
+                  
+                  <InputField
+                    label="PMT (Pago periódico)"
+                    value={tvmData.pmt}
+                    onChange={(val) => setTvmData(prev => ({ ...prev, pmt: val }))}
+                    suffix="$"
+                  />
+                  
+                  <InputField
+                    label="FV (Valor futuro)"
+                    value={tvmData.fv}
+                    onChange={(val) => setTvmData(prev => ({ ...prev, fv: val }))}
+                    suffix="$"
+                  />
+                  
+                  <div className="space-y-1">
+                    <label className="block text-sm font-medium text-gray-700">Modo de pago</label>
+                    <select
+                      value={tvmData.pmtMode}
+                      onChange={(e) => setTvmData(prev => ({ ...prev, pmtMode: e.target.value }))}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    >
+                      <option value="end">Fin del período</option>
+                      <option value="begin">Inicio del período</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <h3 className="font-semibold text-gray-700 mb-4">Calcular variable:</h3>
+                  
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      onClick={() => calculateTVM('n')}
+                      className="bg-blue-600 text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors text-sm"
+                    >
+                      Calcular N
+                    </button>
+                    <button
+                      onClick={() => calculateTVM('i')}
+                      className="bg-blue-600 text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors text-sm"
+                    >
+                      Calcular I/YR
+                    </button>
+                    <button
+                      onClick={() => calculateTVM('pv')}
+                      className="bg-blue-600 text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors text-sm"
+                    >
+                      Calcular PV
+                    </button>
+                    <button
+                      onClick={() => calculateTVM('pmt')}
+                      className="bg-blue-600 text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors text-sm"
+                    >
+                      Calcular PMT
+                    </button>
+                    <button
+                      onClick={() => calculateTVM('fv')}
+                      className="bg-blue-600 text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors text-sm col-span-2"
+                    >
+                      Calcular FV
+                    </button>
+                  </div>
+                  
+                  {Object.keys(results).length > 0 && (
+                    <div className="mt-6 p-4 bg-green-50 rounded-lg">
+                      <h4 className="font-semibold text-green-800 mb-2">Resultados:</h4>
+                      {Object.entries(results).map(([key, value]) => (
+                        <div key={key} className="flex justify-between">
+                          <span className="text-green-700">{key.toUpperCase()}:</span>
+                          <span className="font-mono text-green-800">{value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Loan Tab */}
+          {activeTab === 'loan' && (
+            <div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">Calculadora de Préstamos</h2>
+              
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-4">
+                  <InputField
+                    label="Monto del préstamo"
+                    value={loanData.principal}
+                    onChange={(val) => setLoanData(prev => ({ ...prev, principal: val }))}
+                    suffix="$"
+                  />
+                  
+                  <InputField
+                    label="Tasa de interés anual"
+                    value={loanData.rate}
+                    onChange={(val) => setLoanData(prev => ({ ...prev, rate: val }))}
+                    suffix="%"
+                  />
+                  
+                  <InputField
+                    label="Plazo en años"
+                    value={loanData.years}
+                    onChange={(val) => setLoanData(prev => ({ ...prev, years: val }))}
+                  />
+                  
+                  <CalculateButton onClick={calculateLoan}>
+                    Calcular Préstamo
+                  </CalculateButton>
+                  
+                  {loanData.payment && (
+                    <div className="p-4 bg-blue-50 rounded-lg">
+                      <h4 className="font-semibold text-blue-800 mb-2">Pago mensual:</h4>
+                      <p className="text-2xl font-bold text-blue-900">${loanData.payment}</p>
+                    </div>
+                  )}
+                </div>
+                
+                <div>
+                  {loanData.schedule.length > 0 && (
+                    <div>
+                      <h3 className="font-semibold text-gray-700 mb-4">Tabla de Amortización (Primeros 12 meses)</h3>
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-sm">
+                          <thead className="bg-gray-100">
+                            <tr>
+                              <th className="p-2 text-left">Mes</th>
+                              <th className="p-2 text-right">Capital</th>
+                              <th className="p-2 text-right">Interés</th>
+                              <th className="p-2 text-right">Saldo</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {loanData.schedule.map((row, idx) => (
+                              <tr key={idx} className="border-b">
+                                <td className="p-2">{row.payment}</td>
+                                <td className="p-2 text-right">${row.principal.toFixed(2)}</td>
+                                <td className="p-2 text-right">${row.interest.toFixed(2)}</td>
+                                <td className="p-2 text-right">${row.balance.toFixed(2)}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Bond Tab */}
+          {activeTab === 'bond' && (
+            <div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">Calculadora de Bonos</h2>
+              
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-4">
+                  <InputField
+                    label="Valor nominal"
+                    value={bondData.faceValue}
+                    onChange={(val) => setBondData(prev => ({ ...prev, faceValue: val }))}
+                    suffix="$"
+                  />
+                  
+                  <InputField
+                    label="Tasa de cupón anual"
+                    value={bondData.couponRate}
+                    onChange={(val) => setBondData(prev => ({ ...prev, couponRate: val }))}
+                    suffix="%"
+                  />
+                  
+                  <InputField
+                    label="Años hasta vencimiento"
+                    value={bondData.years}
+                    onChange={(val) => setBondData(prev => ({ ...prev, years: val }))}
+                  />
+                  
+                  <InputField
+                    label="Tasa de mercado (rendimiento)"
+                    value={bondData.marketRate}
+                    onChange={(val) => setBondData(prev => ({ ...prev, marketRate: val }))}
+                    suffix="%"
+                  />
+                  
+                  <CalculateButton onClick={() => calculateBond('price')}>
+                    Calcular Precio del Bono
+                  </CalculateButton>
+                </div>
+                
+                <div>
+                  {bondData.price && (
+                    <div className="p-4 bg-purple-50 rounded-lg">
+                      <h4 className="font-semibold text-purple-800 mb-2">Precio del Bono:</h4>
+                      <p className="text-2xl font-bold text-purple-900">${bondData.price}</p>
+                      
+                      <div className="mt-4 text-sm text-purple-700">
+                        <p>Valor nominal: ${formatNumber(parseFloat(parseNumber(bondData.faceValue)) || 1000)}</p>
+                        <p>Cupón anual: ${formatNumber(((parseFloat(parseNumber(bondData.faceValue)) || 1000) * (parseFloat(parseNumber(bondData.couponRate)) || 0) / 100))}</p>
+                        <p>Premium/Descuento: ${formatNumber((parseFloat(parseNumber(bondData.price)) - (parseFloat(parseNumber(bondData.faceValue)) || 1000)))}</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default FinancialCalculator;
