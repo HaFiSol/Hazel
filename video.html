@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extractor de Subtítulos de YouTube</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .input-section {
+            margin-bottom: 30px;
+        }
+
+        .url-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .url-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .extract-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .extract-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .extract-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .results {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .video-info {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .video-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .video-duration {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .subtitles-container {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            max-height: 500px;
+            overflow-y: auto;
+            border: 1px solid #e9ecef;
+        }
+
+        .subtitle-line {
+            padding: 10px 0;
+            border-bottom: 1px solid #e9ecef;
+            transition: background-color 0.2s ease;
+        }
+
+        .subtitle-line:hover {
+            background-color: #f0f0f0;
+        }
+
+        .subtitle-time {
+            font-size: 0.8em;
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .subtitle-text {
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .download-section {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #dc3545;
+        }
+
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎥 Extractor de Subtítulos de YouTube</h1>
+        
+        <div class="input-section">
+            <input type="text" 
+                   id="youtubeUrl" 
+                   class="url-input" 
+                   placeholder="Pega aquí el enlace del video de YouTube (ej: https://www.youtube.com/watch?v=VIDEO_ID)"
+                   autocomplete="off">
+            <button id="extractBtn" class="extract-btn">
+                Extraer Subtítulos
+            </button>
+        </div>
+
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Extrayendo subtítulos...</p>
+        </div>
+
+        <div id="error" class="error" style="display: none;"></div>
+        <div id="warning" class="warning" style="display: none;"></div>
+
+        <div id="results" class="results">
+            <div class="video-info">
+                <div id="videoTitle" class="video-title"></div>
+                <div id="videoDuration" class="video-duration"></div>
+            </div>
+            
+            <div class="subtitles-container" id="subtitlesContainer">
+                <!-- Los subtítulos aparecerán aquí -->
+            </div>
+            
+            <div class="download-section">
+                <button id="downloadTxt" class="download-btn">
+                    📄 Descargar TXT
+                </button>
+                <button id="downloadSrt" class="download-btn">
+                    🎬 Descargar SRT
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_KEY = 'AIzaSyDUFE5nO1nodZ4kX2LU2CThJIr68M2UO7A';
+
+        let currentSubtitles = [];
+        let videoInfo = {};
+
+        document.getElementById('extractBtn').addEventListener('click', extractSubtitles);
+        document.getElementById('youtubeUrl').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                extractSubtitles();
+            }
+        });
+
+        document.getElementById('downloadTxt').addEventListener('click', downloadTxt);
+        document.getElementById('downloadSrt').addEventListener('click', downloadSrt);
+
+        function showError(message) {
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        function showWarning(message) {
+            const warningDiv = document.getElementById('warning');
+            warningDiv.textContent = message;
+            warningDiv.style.display = 'block';
+            setTimeout(() => {
+                warningDiv.style.display = 'none';
+            }, 8000);
+        }
+
+        function extractVideoId(url) {
+            const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+            const match = url.match(regex);
+            return match ? match[1] : null;
+        }
+
+        function formatTime(seconds) {
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = Math.floor(seconds % 60);
+            
+            if (hours > 0) {
+                return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }
+            return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function formatTimeForSrt(seconds) {
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+            const ms = Math.floor((secs % 1) * 1000);
+            const wholeSecs = Math.floor(secs);
+            
+            return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${wholeSecs.toString().padStart(2, '0')},${ms.toString().padStart(3, '0')}`;
+        }
+
+        async function extractSubtitles() {
+            const url = document.getElementById('youtubeUrl').value.trim();
+            
+            if (!url) {
+                showError('Por favor, ingresa un enlace de YouTube válido.');
+                return;
+            }
+
+            const videoId = extractVideoId(url);
+            if (!videoId) {
+                showError('El enlace de YouTube no es válido. Asegúrate de que tenga el formato correcto.');
+                return;
+            }
+
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('error').style.display = 'none';
+            document.getElementById('warning').style.display = 'none';
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('extractBtn').disabled = true;
+
+            try {
+                const apiUrl = `https://www.googleapis.com/youtube/v3/captions?part=snippet&videoId=${videoId}&key=${API_KEY}`;
+                const listRes = await fetch(apiUrl);
+                const listData = await listRes.json();
+                if (!listData.items || listData.items.length === 0) {
+                    throw new Error('No se encontraron subtítulos automáticos.');
+                }
+                const captionId = listData.items[0].id;
+                const downloadUrl = `https://www.googleapis.com/youtube/v3/captions/${captionId}?tfmt=srt&key=${API_KEY}`;
+                const srtRes = await fetch(downloadUrl);
+                const srtText = await srtRes.text();
+                parseSrt(srtText);
+            } catch (error) {
+                showError('Error al extraer los subtítulos: ' + error.message);
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('extractBtn').disabled = false;
+            }
+        }
+
+        function parseSrt(srt) {
+            const lines = srt.trim().split('\n');
+            currentSubtitles = [];
+            let i = 0;
+            while (i < lines.length) {
+                const idx = lines[i++].trim();
+                const times = lines[i++].split(' --> ');
+                const text = [];
+                while (i < lines.length && lines[i].trim()) {
+                    text.push(lines[i++].trim());
+                }
+                i++;
+                currentSubtitles.push({
+                    start: parseSrtTime(times[0]),
+                    end: parseSrtTime(times[1]),
+                    text: text.join(' ')
+                });
+            }
+            videoInfo = { title: document.getElementById('youtubeUrl').value, duration: '' };
+            displayResults();
+        }
+
+        function parseSrtTime(hmsms) {
+            const [hms, ms] = hmsms.split(',');
+            const [h, m, s] = hms.split(':').map(Number);
+            return h * 3600 + m * 60 + s + Number(ms) / 1000;
+        }
+
+        function displayResults() {
+            document.getElementById('videoTitle').textContent = videoInfo.title;
+            document.getElementById('videoDuration').textContent = `Duración: ${videoInfo.duration}`;
+            const container = document.getElementById('subtitlesContainer');
+            container.innerHTML = '';
+            currentSubtitles.forEach((subtitle, index) => {
+                const subtitleDiv = document.createElement('div');
+                subtitleDiv.className = 'subtitle-line';
+                subtitleDiv.innerHTML = `
+                    <div class="subtitle-time">
+                        ${formatTime(subtitle.start)} - ${formatTime(subtitle.end)}
+                    </div>
+                    <div class="subtitle-text">
+                        ${subtitle.text}
+                    </div>
+                `;
+                container.appendChild(subtitleDiv);
+            });
+            document.getElementById('results').style.display = 'block';
+        }
+
+        function downloadTxt() {
+            if (currentSubtitles.length === 0) return;
+            let content = `${videoInfo.title}\nDuración: ${videoInfo.duration}\n${'='.repeat(50)}\n\n`;
+            currentSubtitles.forEach(sub => {
+                content += `[${formatTime(sub.start)} - ${formatTime(sub.end)}]\n${sub.text}\n\n`;
+            });
+            downloadFile(content, `subtitulos_${Date.now()}.txt`, 'text/plain');
+        }
+
+        function downloadSrt() {
+            if (currentSubtitles.length === 0) return;
+            let content = '';
+            currentSubtitles.forEach((sub, i) => {
+                content += `${i + 1}\n${formatTimeForSrt(sub.start)} --> ${formatTimeForSrt(sub.end)}\n${sub.text}\n\n`;
+            });
+            downloadFile(content, `subtitulos_${Date.now()}.srt`, 'text/plain');
+        }
+
+        function downloadFile(content, filename, mimeType) {
+            const blob = new Blob([content], { type: mimeType });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
