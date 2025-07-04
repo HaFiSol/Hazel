@@ -4,76 +4,84 @@
   <meta charset="utf-8" />
   <title>HazelRo | Servicios Financieros</title>
   <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
-<link rel="shortcut icon" href="/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="/favicon.png">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Paleta & fuente */
-    :root { --accent:#FFE600; --bg:#000; --font:#E6E6E6; }
-    *{ box-sizing:border-box; margin:0; padding:0; font-family:'Inter','Helvetica Neue',Arial,sans-serif; }
-    body{ background:var(--bg); color:var(--font); line-height:1.6; }
+    :root{
+      --accent:#FFE600;
+      --bg:#fff;
+      --dark:#151515;
+      --font-dark:#111;
+      --font-light:#fff;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',Arial,sans-serif}
+    body{background:var(--bg);color:var(--font-dark);line-height:1.6}
 
-    a{ color:var(--accent); text-decoration:none; }
+    /* ↓ enlaces amarillos sobre fondo claro, blancos sobre fondo oscuro */
+    a{color:var(--accent);text-decoration:none}
+    .dark a{color:var(--font-light)}
 
-    /* Header */
+    /* ── Header ───────────────────────── */
     header{
-      display:flex; justify-content:space-between; align-items:center;
-      padding:1rem 2rem; border-bottom:1px solid #222;
+      background:var(--dark);color:var(--font-light);
+      display:flex;justify-content:space-between;align-items:center;
+      padding:1rem 2rem;flex-wrap:wrap
     }
-    .logo-wrap{ display:flex; align-items:center; gap:.65rem; }
-    .logo-img{ width:36px; height:36px; }
-    .logo-text{ font-size:1.4rem; font-weight:700; color:var(--accent); }
-    nav a{ margin-inline:.6rem; font-weight:600; }
+    .logo-wrap{display:flex;align-items:center;gap:.6rem}
+    .logo-img{width:36px;height:36px}
+    .logo-text{font-size:1.4rem;font-weight:700;color:var(--accent)}
+    nav a{margin-inline:.65rem;color:var(--font-light);font-weight:600}
 
-    /* Hero */
+    /* ── Panel genérico negro ─────────── */
+    .panel{
+      background:var(--dark);color:var(--font-light);
+      border:1px solid var(--font-light);
+      border-radius:0; /* recto como EY */
+    }
+
+    /* ── Hero ─────────────────────────── */
     .hero{
-      max-width:1000px; margin:0 auto; padding:5rem 1rem 6rem;
-      display:flex; flex-wrap:wrap; align-items:center; position:relative;
+      max-width:1000px;margin:3rem auto 4rem;padding:3.5rem 1rem 4rem;
+      display:flex;flex-wrap:wrap;align-items:center;gap:3rem
     }
-    .hero h1{
-      width:100%; text-align:center; color:var(--accent);
-      font-size:2.1rem; font-weight:700; margin-bottom:3rem;
-    }
+    .hero h1{width:100%;text-align:center;color:var(--accent);font-size:2.2rem;margin-bottom:2.5rem}
 
-    /* Descripción */
-    .desc{ flex:1 1 260px; max-width:380px; margin-right:-5rem; }
-    .desc p{ margin-bottom:1.4rem; }
-    .desc ul{ list-style:disc; padding-left:1.2rem; margin-top:1.2rem; font-size:.9rem; }
+    .desc{flex:1 1 260px;max-width:380px}
+    .desc ul{list-style:disc;padding-left:1.2rem;margin-top:1.2rem;font-size:.92rem}
 
-    /* Semicírculo */
-    .half{ flex:1 1 480px; width:min(85vw,480px); height:min(85vw,480px); position:relative; }
+    .half{flex:1 1 480px;width:min(85vw,480px);height:min(85vw,480px);position:relative}
     .half::before{
-      content:''; position:absolute; inset:0; border-radius:0 50% 50% 0;
-      background:url('/hazelro-logo.png') center/70% no-repeat,var(--bg); opacity:.10;
+      content:'';position:absolute;inset:0;border-radius:0 50% 50% 0;
+      background:url('/hazelro-logo.png') center/70% no-repeat,transparent;opacity:.12
     }
 
-    /* Nodos */
-    .nodes{ position:absolute; inset:0; }
+    /* ── Nodos ───────────────────────── */
+    .nodes{position:absolute;inset:0}
     .node{
-      position:absolute; width:95px; height:95px; border-radius:50%;
-      background:#111; border:2px solid var(--accent);
-      display:flex; align-items:center; justify-content:center;
-      padding:.55rem; text-align:center; font-size:.78rem; font-weight:600;
-      color:var(--font); transition:.25s; cursor:pointer;
+      position:absolute;width:95px;height:95px;border-radius:50%;
+      background:var(--dark);border:2px solid var(--font-light);
+      display:flex;align-items:center;justify-content:center;
+      padding:.5rem;text-align:center;font-size:.78rem;font-weight:600;
+      color:var(--font-light);transition:.25s;cursor:pointer
     }
-    .node:hover{ background:var(--accent); color:#000; transform:scale(1.06); }
+    .node:hover{background:var(--accent);color:var(--font-dark);transform:scale(1.06)}
 
-    /* Posición de los nodos (en “reloj”) */
-    .s1{ top:4%;  left:74%; }
-    .s2{ top:26%; left:87%; }
-    .s3{ top:48%; left:90%; }
-    .s4{ top:70%; left:87%; }
-    .s5{ top:90%; left:74%; }
+    /* ubicación “reloj” */
+    .s1{top:4%; left:74%}
+    .s2{top:26%;left:87%}
+    .s3{top:48%;left:90%}
+    .s4{top:70%;left:87%}
+    .s5{top:90%;left:74%}
 
-    /* Footer */
-    footer{ margin-top:4rem; padding:2rem 1rem; text-align:center; font-size:.85rem; color:#888; }
+    /* ── Footer ───────────────────────── */
+    footer{margin-top:4rem;padding:2rem 1rem;text-align:center;font-size:.85rem;color:#666}
 
-    /* Responsive */
+    /* ── Responsive ───────────────────── */
     @media(max-width:640px){
-      .hero h1{ font-size:1.8rem; margin-bottom:2rem; }
-      .node{ width:85px; height:85px; font-size:.7rem; padding:.45rem; }
-      .half{ width:100%; height:380px; }
-      .desc{ margin-right:0; margin-bottom:2.5rem; }
+      .hero h1{font-size:1.9rem;margin-bottom:2rem}
+      .node{width:85px;height:85px;font-size:.72rem}
+      .half{width:100%;height:380px}
     }
   </style>
 </head>
@@ -90,19 +98,15 @@
     <a href="/project-evaluation.html">Evaluación</a> |
     <a href="/cost-optimization.html">Optimización</a> |
     <a href="/outsourcing.html">Outsourcing</a> |
-    <a href="/tax-advice.html">Tributaria PN</a>
+    <a href="/tax-advice.html">Tributaria&nbsp;PN</a>
   </nav>
 </header>
 
-<section class="hero">
+<section class="hero panel">
   <h1>Transforma tus Finanzas en Ventaja Competitiva</h1>
 
   <div class="desc">
-    <p>
-      En HazelRo convertimos números en estrategia y procesos en resultados.
-      Diseñamos, implementamos y orquestamos la arquitectura financiera que
-      impulsa <strong>crecimiento rentable</strong>, libera caja y mitiga riesgos.
-    </p>
+    <p>En HazelRo convertimos números en estrategia y procesos en resultados.</p>
     <ul>
       <li><strong>Planeación Financiera</strong> basada en drivers.</li>
       <li><strong>Evaluación de Proyectos</strong> con VAN, TIR y escenarios.</li>
