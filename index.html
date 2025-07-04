@@ -4,94 +4,58 @@
   <meta charset="utf-8" />
   <title>HazelRo | Servicios Financieros</title>
   <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
-  <link rel="shortcut icon" href="/favicon.png">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --accent:#FFE600;
-      --bg:#fff;
-      --dark:#151515;
-      --font-dark:#111;
-      --font-light:#fff;
-    }
+    :root{--accent:#FFE600;--bg:#fff;--dark:#151515;--font-dark:#111;--font-light:#fff}
     *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',Arial,sans-serif}
     body{background:var(--bg);color:var(--font-dark);line-height:1.6}
 
-    /* ↓ enlaces amarillos sobre fondo claro, blancos sobre fondo oscuro */
-    a{color:var(--accent);text-decoration:none}
-    .dark a{color:var(--font-light)}
+    a{color:var(--accent);text-decoration:none}.dark a{color:var(--font-light)}
 
-    /* ── Header ───────────────────────── */
-    header{
-      background:var(--dark);color:var(--font-light);
+    header{background:var(--dark);color:var(--font-light);
       display:flex;justify-content:space-between;align-items:center;
-      padding:1rem 2rem;flex-wrap:wrap
-    }
+      padding:1rem 2rem;flex-wrap:wrap}
     .logo-wrap{display:flex;align-items:center;gap:.6rem}
-    .logo-img{width:36px;height:36px}
-    .logo-text{font-size:1.4rem;font-weight:700;color:var(--accent)}
+    .logo-img{width:36px;height:36px}.logo-text{font-size:1.4rem;font-weight:700;color:var(--accent)}
     nav a{margin-inline:.65rem;color:var(--font-light);font-weight:600}
 
-    /* ── Panel genérico negro ─────────── */
-    .panel{
-      background:var(--dark);color:var(--font-light);
-      border:1px solid var(--font-light);
-      border-radius:0; /* recto como EY */
-    }
+    .panel{background:var(--dark);color:var(--font-light);border:1px solid var(--font-light)}
 
-    /* ── Hero ─────────────────────────── */
-    .hero{
-      max-width:1000px;margin:3rem auto 4rem;padding:3.5rem 1rem 4rem;
-      display:flex;flex-wrap:wrap;align-items:center;gap:3rem
-    }
-    .hero h1{width:100%;text-align:center;color:var(--accent);font-size:2.2rem;margin-bottom:2.5rem}
+    .hero{max-width:1100px;margin:3rem auto 4rem;padding:4rem 1.4rem 5rem;
+          display:flex;flex-wrap:wrap;align-items:center;gap:3.5rem}
+    .hero h1{width:100%;text-align:center;color:var(--accent);font-size:2.4rem;margin-bottom:3rem}
 
-    .desc{flex:1 1 260px;max-width:380px}
-    .desc ul{list-style:disc;padding-left:1.2rem;margin-top:1.2rem;font-size:.92rem}
+    .desc{flex:1 1 320px;max-width:420px}
+    .desc ul{list-style:disc;padding-left:1.2rem;margin-top:1.2rem;font-size:.95rem}
 
-    .half{flex:1 1 480px;width:min(85vw,480px);height:min(85vw,480px);position:relative}
-    .half::before{
-      content:'';position:absolute;inset:0;border-radius:0 50% 50% 0;
-      background:url('/hazelro-logo.png') center/70% no-repeat,transparent;opacity:.12
-    }
+    .half{flex:1 1 480px;width:min(90vw,500px);height:min(90vw,500px);position:relative}
+    .half::before{content:'';position:absolute;inset:0;border-radius:0 50% 50% 0;
+      background:url('/hazelro-logo.png') center/70% no-repeat,transparent;opacity:.12}
 
-    /* ── Nodos ───────────────────────── */
     .nodes{position:absolute;inset:0}
-    .node{
-      position:absolute;width:95px;height:95px;border-radius:50%;
+    .node{position:absolute;width:100px;height:100px;border-radius:50%;
       background:var(--dark);border:2px solid var(--font-light);
-      display:flex;align-items:center;justify-content:center;
-      padding:.5rem;text-align:center;font-size:.78rem;font-weight:600;
-      color:var(--font-light);transition:.25s;cursor:pointer
-    }
+      display:flex;align-items:center;justify-content:center;padding:.55rem;
+      text-align:center;font-size:.8rem;font-weight:600;color:var(--font-light);
+      transition:.25s;cursor:pointer}
     .node:hover{background:var(--accent);color:var(--font-dark);transform:scale(1.06)}
 
-    /* ubicación “reloj” */
-    .s1{top:4%; left:74%}
-    .s2{top:26%;left:87%}
-    .s3{top:48%;left:90%}
-    .s4{top:70%;left:87%}
-    .s5{top:90%;left:74%}
+    .s1{top:4%; left:72%}.s2{top:24%;left:86%}.s3{top:46%;left:90%}
+    .s4{top:70%;left:86%}.s5{top:92%;left:72%}
 
-    /* ── Footer ───────────────────────── */
     footer{margin-top:4rem;padding:2rem 1rem;text-align:center;font-size:.85rem;color:#666}
 
-    /* ── Responsive ───────────────────── */
     @media(max-width:640px){
-      .hero h1{font-size:1.9rem;margin-bottom:2rem}
-      .node{width:85px;height:85px;font-size:.72rem}
-      .half{width:100%;height:380px}
+      .hero h1{font-size:1.9rem}
+      .node{width:88px;height:88px;font-size:.72rem}
+      .half{width:100%;height:400px}
     }
   </style>
 </head>
-
 <body>
 <header>
-  <a href="/" class="logo-wrap">
-    <img src="/hazelro-logo.png" alt="HazelRo" class="logo-img">
-    <span class="logo-text">HazelRo</span>
-  </a>
+  <a href="/" class="logo-wrap"><img src="/hazelro-logo.png" class="logo-img" alt="HazelRo"><span class="logo-text">HazelRo</span></a>
   <nav>
     <a href="/">Inicio</a> |
     <a href="/financial-planning.html">Planeación</a> |
@@ -104,7 +68,6 @@
 
 <section class="hero panel">
   <h1>Transforma tus Finanzas en Ventaja Competitiva</h1>
-
   <div class="desc">
     <p>En HazelRo convertimos números en estrategia y procesos en resultados.</p>
     <ul>
@@ -115,7 +78,6 @@
       <li><strong>Asesoría Tributaria PN</strong> para maximizar beneficios fiscales.</li>
     </ul>
   </div>
-
   <div class="half">
     <div class="nodes">
       <a class="node s1" href="/financial-planning.html">Planeación<br>Financiera</a>
@@ -128,7 +90,7 @@
 </section>
 
 <footer>
-  Tel: <a href="tel:+573212063866">+57 321 206 3866</a> &nbsp;|&nbsp;
+  Tel: <a href="tel:+573212063866">+57 321 206 3866</a> | 
   Email: <a href="mailto:asesor@hazelro.com">asesor@hazelro.com</a><br>
   © 2025 HazelRo • Bogotá-Colombia
 </footer>
