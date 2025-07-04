@@ -10,46 +10,49 @@
     :root{--accent:#FFE600;--bg:#fff;--dark:#151515;--font-dark:#111;--font-light:#fff}
     *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',Arial,sans-serif}
     body{background:var(--bg);color:var(--font-dark);line-height:1.6}
-
     a{color:var(--accent);text-decoration:none}.dark a{color:var(--font-light)}
 
+    /* Header */
     header{background:var(--dark);color:var(--font-light);
-      display:flex;justify-content:space-between;align-items:center;
-      padding:1rem 2rem;flex-wrap:wrap}
+      display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;flex-wrap:wrap}
     .logo-wrap{display:flex;align-items:center;gap:.6rem}
     .logo-img{width:36px;height:36px}.logo-text{font-size:1.4rem;font-weight:700;color:var(--accent)}
     nav a{margin-inline:.65rem;color:var(--font-light);font-weight:600}
 
+    /* Panel negro genérico */
     .panel{background:var(--dark);color:var(--font-light);border:1px solid var(--font-light)}
 
-    .hero{max-width:1100px;margin:3rem auto 4rem;padding:4rem 1.4rem 5rem;
-          display:flex;flex-wrap:wrap;align-items:center;gap:3.5rem}
-    .hero h1{width:100%;text-align:center;color:var(--accent);font-size:2.4rem;margin-bottom:3rem}
+    /* Hero */
+    .hero{max-width:1200px;margin:3.5rem auto 5rem;padding:5rem 1.5rem 6rem;
+          display:flex;flex-wrap:wrap;align-items:center;gap:4rem}
+    .hero h1{width:100%;text-align:center;color:var(--accent);font-size:2.6rem;margin-bottom:3.2rem}
 
-    .desc{flex:1 1 320px;max-width:420px}
-    .desc ul{list-style:disc;padding-left:1.2rem;margin-top:1.2rem;font-size:.95rem}
+    .desc{flex:1 1 380px;max-width:500px}
+    .desc ul{list-style:disc;padding-left:1.4rem;margin-top:1.4rem;font-size:.98rem}
 
-    .half{flex:1 1 480px;width:min(90vw,500px);height:min(90vw,500px);position:relative}
+    .half{flex:1 1 500px;width:min(92vw,520px);height:min(92vw,520px);position:relative}
     .half::before{content:'';position:absolute;inset:0;border-radius:0 50% 50% 0;
       background:url('/hazelro-logo.png') center/70% no-repeat,transparent;opacity:.12}
 
+    /* Nodes */
     .nodes{position:absolute;inset:0}
-    .node{position:absolute;width:100px;height:100px;border-radius:50%;
+    .node{position:absolute;width:110px;height:110px;border-radius:50%;
       background:var(--dark);border:2px solid var(--font-light);
-      display:flex;align-items:center;justify-content:center;padding:.55rem;
-      text-align:center;font-size:.8rem;font-weight:600;color:var(--font-light);
-      transition:.25s;cursor:pointer}
+      display:flex;align-items:center;justify-content:center;padding:.6rem;text-align:center;
+      font-size:.82rem;font-weight:600;color:var(--font-light);cursor:pointer;transition:.25s}
     .node:hover{background:var(--accent);color:var(--font-dark);transform:scale(1.06)}
 
-    .s1{top:4%; left:72%}.s2{top:24%;left:86%}.s3{top:46%;left:90%}
-    .s4{top:70%;left:86%}.s5{top:92%;left:72%}
+    /* Clock positions */
+    .s1{top:2%;  left:70%}.s2{top:23%; left:85%}.s3{top:46%; left:89%}
+    .s4{top:71%; left:85%}.s5{top:94%; left:70%}
 
-    footer{margin-top:4rem;padding:2rem 1rem;text-align:center;font-size:.85rem;color:#666}
+    /* Footer */
+    footer{margin-top:5rem;padding:2rem 1rem;text-align:center;font-size:.85rem;color:#666}
 
     @media(max-width:640px){
-      .hero h1{font-size:1.9rem}
-      .node{width:88px;height:88px;font-size:.72rem}
-      .half{width:100%;height:400px}
+      .hero h1{font-size:2.1rem}
+      .node{width:95px;height:95px;font-size:.74rem}
+      .half{width:100%;height:420px}
     }
   </style>
 </head>
